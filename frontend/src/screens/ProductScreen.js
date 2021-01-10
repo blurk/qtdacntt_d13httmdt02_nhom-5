@@ -1,5 +1,13 @@
-import React, { useEffect } from 'react';
-import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import {
+	Button,
+	Card,
+	Col,
+	Form,
+	Image,
+	ListGroup,
+	Row,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { listProductDetail } from '../actions/productActions';
@@ -7,7 +15,9 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Rating from '../components/Rating';
 
-export default function ProductScreen({ match }) {
+export default function ProductScreen({ match, history }) {
+	const [quantity, setQuantity] = useState(0);
+
 	const dispatch = useDispatch();
 
 	const productDetail = useSelector((state) => state.productDetail);
@@ -16,6 +26,10 @@ export default function ProductScreen({ match }) {
 	useEffect(() => {
 		dispatch(listProductDetail(match.params.id));
 	}, [dispatch, match]);
+
+	const addToCartHandler = () => {
+		history.push(`/cart/${match.params.id}?quantity=${quantity}`);
+	};
 
 	return (
 		<>
@@ -68,8 +82,29 @@ export default function ProductScreen({ match }) {
 										</Col>
 									</Row>
 								</ListGroup.Item>
+								{/* QUANTITY SELECET */}
+								{product.countInStock > 0 && (
+									<ListGroup.Item>
+										<Row>
+											<Col>Quantity</Col>
+											<Col>
+												<Form.Control
+													as='select'
+													value={quantity}
+													onChange={(e) => setQuantity(e.target.value)}>
+													{[...Array(product.countInStock).keys()].map((k) => (
+														<option key={k + 1} value={k + 1}>
+															{k + 1}
+														</option>
+													))}
+												</Form.Control>
+											</Col>
+										</Row>
+									</ListGroup.Item>
+								)}
 								<ListGroup.Item>
 									<Button
+										onClick={addToCartHandler}
 										className='btn-block'
 										type='button'
 										disabled={!product.countInStock}>
