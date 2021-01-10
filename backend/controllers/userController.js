@@ -29,4 +29,25 @@ const authUser = asyncHandler(async (request, response) => {
 	response.json(user);
 });
 
-export { authUser };
+/*
+ * @desc GET user profile
+ * @route GET /api/users/profile
+ * @access Private
+ */
+
+const getUserProfile = asyncHandler(async (request, response) => {
+	const user = await User.findById(request.user._id);
+
+	if (user) {
+		response.json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			isAdmin: user.isAdmin,
+		});
+	} else {
+		response.status(404);
+		throw new Error('User not found');
+	}
+});
+export { authUser, getUserProfile };
