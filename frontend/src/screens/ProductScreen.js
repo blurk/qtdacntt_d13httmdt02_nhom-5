@@ -16,7 +16,7 @@ import Message from '../components/Message';
 import Rating from '../components/Rating';
 
 export default function ProductScreen({ match, history }) {
-	const [quantity, setQuantity] = useState(0);
+	const [quantity, setQuantity] = useState(1);
 
 	const dispatch = useDispatch();
 
