@@ -17,7 +17,7 @@ export default function Product({ product }) {
 				</Link>
 				<Card.Text as='div'>
 					<Rating
-						value={product.rating}
+						value={+product.rating}
 						text={`${product.numReviews} reviews`}
 					/>
 				</Card.Text>
