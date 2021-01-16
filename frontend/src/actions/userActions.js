@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+	USER_DETAILS_FAIL,
+	USER_DETAILS_REQUEST,
+	USER_DETAILS_SUCCESS,
 	USER_LOGIN_FAIL,
 	USER_LOGIN_REQUEST,
 	USER_LOGIN_SUCCESS,
@@ -16,7 +19,7 @@ export const login = (email, password) => async (dispatch) => {
 		});
 
 		const config = {
-			header: {
+			headers: {
 				'Content-Type': 'application/json',
 			},
 		};
@@ -58,7 +61,7 @@ export const register = (name, email, password) => async (dispatch) => {
 		});
 
 		const config = {
-			header: {
+			headers: {
 				'Content-Type': 'application/json',
 			},
 		};
@@ -87,6 +90,43 @@ export const register = (name, email, password) => async (dispatch) => {
 				error.response && error.response.data.message
 					? error.response.data.message
 					: error.response,
+		});
+	}
+};
+
+export const getUserDetails = (id) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: USER_DETAILS_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		const { data } = await axios.get(`/api/users/${id}`, config);
+
+		dispatch({
+			type: USER_DETAILS_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		const message =
+			error.response && error.response.data.message
+				? error.response.data.message
+				: error.message;
+		if (message === 'Not authorized, token failed') {
+			dispatch(logout());
+		}
+		dispatch({
+			type: USER_DETAILS_FAIL,
+			payload: message,
 		});
 	}
 };
