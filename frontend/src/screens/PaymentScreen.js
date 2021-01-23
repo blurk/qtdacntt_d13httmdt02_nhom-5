@@ -13,7 +13,7 @@ export default function PaymentScreen({ history }) {
 		history.push('/shipping');
 	}
 
-	const [paymentMethod, setPaymentMethod] = useState('PayPal');
+	const [paymentMethod, setPaymentMethod] = useState('paypal');
 
 	const dispatch = useDispatch();
 
@@ -30,7 +30,6 @@ export default function PaymentScreen({ history }) {
 			<Form.Group>
 				<Form.Label as='legend'>Select method</Form.Label>
 				<Col>
-					{/* //TODO ADD COD PAYMENT METHOD */}
 					<Form.Check
 						type='radio'
 						label='Paypal or Credit Card'
