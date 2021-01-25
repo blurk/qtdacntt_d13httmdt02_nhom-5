@@ -6,7 +6,7 @@ import {
 	Form,
 	Image,
 	ListGroup,
-	Row,
+	Row
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -73,7 +73,6 @@ export default function ProductScreen({ match, history }) {
 										</Col>
 									</Row>
 								</ListGroup.Item>
-
 								<ListGroup.Item>
 									<Row>
 										<Col>Status: </Col>
