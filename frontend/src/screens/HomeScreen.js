@@ -8,8 +8,9 @@ import Product from '../components/Product';
 
 export default function HomeScreen() {
 	const dispatch = useDispatch();
-	const productList = useSelector((state) => state.productList);
-	const { loading, error, products } = productList;
+	const { loading, error, products } = useSelector(
+		(state) => state.productList
+	);
 
 	useEffect(() => {
 		dispatch(listProducts());
@@ -23,7 +24,7 @@ export default function HomeScreen() {
 				<Message variant='danger'>{error}</Message>
 			) : (
 				<Row>
-					{products.map((product) => (
+					{products?.map((product) => (
 						<Col sm={12} md={6} lg={4} xl={3} key={product._id}>
 							<Product product={product} />
 						</Col>
