@@ -115,4 +115,86 @@ const updateUserProfile = asyncHandler(async (request, response) => {
 	}
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile };
+/*
+ * @desc GET all users
+ * @route GET /api/users
+ * @access Private/Admin
+ */
+
+const getUsers = asyncHandler(async (request, response) => {
+	const users = await User.find({});
+	response.json(users);
+});
+
+/*
+ * @desc DELETE user
+ * @route DELETE /api/users/:id
+ * @access Private/Admin
+ */
+
+const deleteUser = asyncHandler(async (request, response) => {
+	const user = await User.findById(request.params.id);
+
+	if (user) {
+		await user.remove();
+		response.json({ message: 'User removed' });
+	} else {
+		response.status(404);
+		throw new Error('User not found');
+	}
+});
+
+/*
+ * @desc GET user by id
+ * @route GET /api/users/:id
+ * @access Private/Admin
+ */
+
+const getUserById = asyncHandler(async (request, response) => {
+	const user = await User.findById(request.params.id).select('-password');
+	if (user) {
+		response.json(user);
+	} else {
+		response.json(404);
+		throw new Error('User not found');
+	}
+});
+
+/*
+ * @desc UPDATE user profile
+ * @route PUT /api/users/:id
+ * @access Private/Admin
+ */
+
+const updateUser = asyncHandler(async (request, response) => {
+	const user = await User.findById(request.params.id);
+
+	if (user) {
+		user.name = request.body.name || user.name;
+		user.email = request.body.email || user.email;
+		user.isAdmin = request.body.isAdmin;
+
+		const updatedUser = await user.save();
+
+		response.json({
+			_id: updatedUser._id,
+			name: updatedUser.name,
+			email: updatedUser.email,
+			isAdmin: updatedUser.isAdmin,
+		});
+	} else {
+		response.status(404);
+		throw new Error('User not found');
+	}
+});
+
+export {
+	authUser,
+	getUserProfile,
+	registerUser,
+	updateUserProfile,
+	getUsers,
+	deleteUser,
+	getUserById,
+	updateUser,
+};
