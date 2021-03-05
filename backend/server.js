@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import morgan from 'morgan';
 import path from 'path';
 import connectDB from './config/db.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
@@ -16,6 +17,10 @@ const app = express();
 
 //Except json data in the body
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'));
+}
 
 app.get('/', (req, res) => res.send('API is running... 🏃‍♂️'));
 
