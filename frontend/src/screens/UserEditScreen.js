@@ -17,8 +17,9 @@ export default function UserEditScreen({ match, history }) {
 
 	const dispatch = useDispatch();
 
-	const userDetails = useSelector((state) => state.userDetails);
-	const { loading, user, error } = userDetails;
+	const { loading, user, error } = useSelector((state) => state.userDetails);
+
+	const { userInfo } = useSelector((state) => state.userLogin);
 
 	const {
 		loading: loadingUpdate,
@@ -27,6 +28,10 @@ export default function UserEditScreen({ match, history }) {
 	} = useSelector((state) => state.userUpdate);
 
 	useEffect(() => {
+		if (!userInfo || !userInfo.isAdmin) {
+			history.push('/login');
+		}
+
 		if (successUpdate) {
 			dispatch({ type: USER_UPDATE_RESET });
 			history.push('/admin/userList');

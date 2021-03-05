@@ -8,7 +8,7 @@ import Product from '../models/productModel.js';
  */
 
 const getProducts = asyncHandler(async (request, response) => {
-	const pageSize = 10;
+	const pageSize = 8;
 	const page = Number(request.query.pageNumber) || 1;
 
 	const keyword = request.query.keyword
@@ -163,6 +163,18 @@ const createProductReview = asyncHandler(async (request, response) => {
 	}
 });
 
+/*
+ * @desc GET top rated product
+ * @route GET /api/products/top
+ * @access Public
+ */
+
+const getTopProducts = asyncHandler(async (request, response) => {
+	const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+
+	response.json(products);
+});
+
 export {
 	getProductById,
 	getProducts,
@@ -170,4 +182,5 @@ export {
 	createProduct,
 	updateProduct,
 	createProductReview,
+	getTopProducts,
 };
