@@ -39,9 +39,8 @@ export default function ProductListScreen({ history, match }) {
 	useEffect(() => {
 		dispatch({ type: PRODUCT_CREATE_RESET });
 
-		if (!userInfo.isAdmin) {
+		if (!userInfo || !userInfo.isAdmin) {
 			history.push('/login');
-		} else {
 		}
 
 		if (successCreate) {
@@ -108,7 +107,7 @@ export default function ProductListScreen({ history, match }) {
 								<tr key={product._id}>
 									<td>{product._id}</td>
 									<td>{product.name}</td>
-									<td>${product.price}</td>
+									<td>{product.price}₫</td>
 									<td>{product.category}</td>
 									<td>{product.brand}</td>
 									<td>
@@ -128,7 +127,7 @@ export default function ProductListScreen({ history, match }) {
 							))}
 						</tbody>
 					</Table>
-					<Paginate page={page} pages={pages} isAdmin={userInfo.isAdmin} />
+					<Paginate page={page} pages={pages} isAdmin={userInfo?.isAdmin} />
 				</>
 			)}
 		</>

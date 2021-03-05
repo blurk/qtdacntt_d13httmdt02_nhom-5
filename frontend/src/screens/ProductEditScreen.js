@@ -27,6 +27,8 @@ export default function ProductEditScreen({ match, history }) {
 		(state) => state.productDetail
 	);
 
+	const { userInfo } = useSelector((state) => state.userLogin);
+
 	const {
 		loading: loadingUpdate,
 		success: successUpdate,
@@ -34,6 +36,10 @@ export default function ProductEditScreen({ match, history }) {
 	} = useSelector((state) => state.productUpdate);
 
 	useEffect(() => {
+		if (!userInfo.isAdmin) {
+			history.push('/login');
+		}
+
 		if (successUpdate) {
 			dispatch({ type: PRODUCT_UPDATE_RESET });
 			history.push('/admin/productList');
