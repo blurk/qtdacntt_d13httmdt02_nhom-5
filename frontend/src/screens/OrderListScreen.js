@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { listOrders } from '../actions/orderActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import { formatter } from '../utils';
 
 export default function OrderListScreen({ history }) {
 	const { loading, error, orders } = useSelector((state) => state.orderList);
@@ -47,7 +48,7 @@ export default function OrderListScreen({ history }) {
 								<td>{order._id}</td>
 								<td>{order.user && order.user.name}</td>
 								<td>{order.createdAt.substring(0, 10)}</td>
-								<td>${order.totalPrice}</td>
+								<td>{formatter.format(order.totalPrice)}</td>
 								<td>
 									{order.isPaid ? (
 										order.paidAt.substring(0, 10)

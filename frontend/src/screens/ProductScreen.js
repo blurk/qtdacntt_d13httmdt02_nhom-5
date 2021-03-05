@@ -19,6 +19,7 @@ import Message from '../components/Message';
 import Meta from '../components/Meta';
 import Rating from '../components/Rating';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
+import { formatter } from '../utils';
 
 export default function ProductScreen({ match, history }) {
 	const [quantity, setQuantity] = useState(1);
@@ -89,7 +90,9 @@ export default function ProductScreen({ match, history }) {
 										text={`${product.numReviews} reviews`}
 									/>
 								</ListGroup.Item>
-								<ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+								<ListGroup.Item>
+									Price: {formatter.format(product.price)}
+								</ListGroup.Item>
 								<ListGroup.Item>
 									Description: {product.description}
 								</ListGroup.Item>
@@ -102,7 +105,7 @@ export default function ProductScreen({ match, history }) {
 										<Row>
 											<Col>Price: </Col>
 											<Col>
-												<strong>${product.price}</strong>
+												<strong>{formatter.format(product.price)}</strong>
 											</Col>
 										</Row>
 									</ListGroup.Item>

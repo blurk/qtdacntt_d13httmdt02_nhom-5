@@ -5,11 +5,11 @@ import { saveShippingAddress } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 import FormContainer from '../components/FormContainer';
 
-export default function ShippingScreen({ history }) {
+const ShippingScreen = ({ history }) => {
 	const cart = useSelector((state) => state.cart);
 	const { shippingAddress } = cart;
 
-	const [address, setAdress] = useState(shippingAddress.address);
+	const [address, setAddress] = useState(shippingAddress.address);
 	const [city, setCity] = useState(shippingAddress.city);
 	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
 	const [country, setCountry] = useState(shippingAddress.country);
@@ -34,7 +34,7 @@ export default function ShippingScreen({ history }) {
 						placeholder='Enter address'
 						value={address}
 						required
-						onChange={(e) => setAdress(e.target.value)}></Form.Control>
+						onChange={(e) => setAddress(e.target.value)}></Form.Control>
 				</Form.Group>
 
 				<Form.Group controlId='city'>
@@ -43,15 +43,17 @@ export default function ShippingScreen({ history }) {
 						type='text'
 						placeholder='Enter city'
 						value={city}
+						required
 						onChange={(e) => setCity(e.target.value)}></Form.Control>
 				</Form.Group>
 
-				<Form.Group controlId='postal code'>
+				<Form.Group controlId='postalCode'>
 					<Form.Label>Postal Code</Form.Label>
 					<Form.Control
 						type='text'
-						placeholder='Enter postalCode'
+						placeholder='Enter postal code'
 						value={postalCode}
+						required
 						onChange={(e) => setPostalCode(e.target.value)}></Form.Control>
 				</Form.Group>
 
@@ -61,6 +63,7 @@ export default function ShippingScreen({ history }) {
 						type='text'
 						placeholder='Enter country'
 						value={country}
+						required
 						onChange={(e) => setCountry(e.target.value)}></Form.Control>
 				</Form.Group>
 
@@ -70,4 +73,6 @@ export default function ShippingScreen({ history }) {
 			</Form>
 		</FormContainer>
 	);
-}
+};
+
+export default ShippingScreen;

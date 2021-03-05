@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rating from '../components/Rating';
+import { formatter } from '../utils';
+
 export default function Product({ product }) {
 	return (
 		<Card className='my-3 p-3 rounded'>
@@ -22,7 +24,7 @@ export default function Product({ product }) {
 					/>
 				</Card.Text>
 
-				<Card.Text as='h3'>{product.price}₫</Card.Text>
+				<Card.Text as='h5'>{formatter.format(product.price)}</Card.Text>
 			</Card.Body>
 		</Card>
 	);

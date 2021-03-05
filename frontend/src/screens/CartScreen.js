@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import Message from '../components/Message';
+import { formatter } from '../utils';
 
 export default function CartScreen({ match, location, history }) {
 	const productId = match.params.id;
@@ -20,8 +21,7 @@ export default function CartScreen({ match, location, history }) {
 	const quantity = location.search ? +location.search.split('=')[1] : 1;
 
 	const dispatch = useDispatch();
-	const cart = useSelector((state) => state.cart);
-	const { cartItems } = cart;
+	const { cartItems } = useSelector((state) => state.cart);
 
 	useEffect(() => {
 		if (productId) {
@@ -56,7 +56,7 @@ export default function CartScreen({ match, location, history }) {
 									<Col md={3}>
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
-									<Col md={2}>${item.price}</Col>
+									<Col md={2}>{formatter.format(item.price)}</Col>
 									<Col md={2}>
 										<Form.Control
 											as='select'
@@ -93,10 +93,11 @@ export default function CartScreen({ match, location, history }) {
 								Subtotal (
 								{cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
 							</h2>
-							$
-							{cartItems
-								.reduce((acc, item) => acc + item.quantity * item.price, 0)
-								.toFixed(2)}
+							{formatter.format(
+								cartItems
+									.reduce((acc, item) => acc + item.quantity * item.price, 0)
+									.toFixed(2)
+							)}
 						</ListGroup.Item>
 						<ListGroup.Item>
 							<Button
