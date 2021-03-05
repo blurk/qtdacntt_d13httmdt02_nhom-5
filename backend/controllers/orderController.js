@@ -7,7 +7,7 @@ import Order from '../models/orderModel.js';
  * @access Private
  */
 
-const addOrderItems = asyncHandler(async (request, response) => {
+const addOrderItems = asyncHandler(async (req, res) => {
 	const {
 		orderItems,
 		shippingAddress,
@@ -16,16 +16,15 @@ const addOrderItems = asyncHandler(async (request, response) => {
 		taxPrice,
 		shippingPrice,
 		totalPrice,
-	} = request.body;
+	} = req.body;
 
 	if (orderItems && orderItems.length === 0) {
-		response.status(400);
+		res.status(400);
 		throw new Error('No order items');
-		return;
 	} else {
 		const order = new Order({
 			orderItems,
-			user: request.user._id,
+			user: req.user._id,
 			shippingAddress,
 			paymentMethod,
 			itemsPrice,
@@ -36,7 +35,7 @@ const addOrderItems = asyncHandler(async (request, response) => {
 
 		const createdOrder = await order.save();
 
-		response.status(201).json(createdOrder);
+		res.status(201).json(createdOrder);
 	}
 });
 
@@ -70,14 +69,16 @@ const updateOrderToPaid = asyncHandler(async (request, response) => {
 	const order = await Order.findById(request.params.id);
 
 	if (order) {
-		order.isPaid = true;
+		order.isPaid = request.body.isCOD ? false : true;
 		order.paidAt = Date.now();
-		order.paymentResult = {
-			id: request.body.id,
-			status: request.body.status,
-			update_time: request.body.update_time,
-			email_address: request.body.payer.email_address,
-		};
+		order.paymentResult = request.body.id
+			? {
+					id: request.body.id,
+					status: request.body.status,
+					update_time: request.body.update_time,
+					email_address: request.body.payer.email_address,
+			  }
+			: {};
 
 		const updatedOrder = await order.save();
 

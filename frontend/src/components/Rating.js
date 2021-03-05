@@ -59,7 +59,7 @@ export default function Rating({ value, text, color }) {
 							: 'far fa-star'
 					}></i>
 			</span>
-			<span>{text && text}</span>
+			<p>{text && text}</p>
 		</div>
 	);
 }

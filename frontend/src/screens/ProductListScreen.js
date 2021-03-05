@@ -11,6 +11,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
+import { formatter } from '../utils';
 
 export default function ProductListScreen({ history, match }) {
 	const pageNumber = match.params.pageNumber || 1;
@@ -107,7 +108,7 @@ export default function ProductListScreen({ history, match }) {
 								<tr key={product._id}>
 									<td>{product._id}</td>
 									<td>{product.name}</td>
-									<td>{product.price}₫</td>
+									<td>{formatter.format(product.price)}</td>
 									<td>{product.category}</td>
 									<td>{product.brand}</td>
 									<td>

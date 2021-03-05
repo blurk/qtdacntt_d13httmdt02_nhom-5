@@ -11,10 +11,12 @@ import {
 } from '../actions/orderActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import { CART_RESET } from '../constants/cartConstants';
 import {
 	ORDER_DELIVER_RESET,
 	ORDER_PAY_RESET,
 } from '../constants/orderConstants';
+import { formatter } from '../utils';
 
 export default function OrderScreen({ match, history }) {
 	const orderId = match.params.id;
@@ -44,8 +46,8 @@ export default function OrderScreen({ match, history }) {
 			const { data: clientId } = await axios.get('/api/config/paypal');
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
-			script.async = true;
 			script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+			script.async = true;
 			script.onload = () => {
 				setSdkReady(true);
 			};
@@ -53,9 +55,10 @@ export default function OrderScreen({ match, history }) {
 			document.body.appendChild(script);
 		};
 
-		if (!order || successPay || successDeliver) {
+		if (!order || successPay || successDeliver || order._id !== orderId) {
 			dispatch({ type: ORDER_PAY_RESET });
 			dispatch({ type: ORDER_DELIVER_RESET });
+			dispatch({ type: CART_RESET });
 			dispatch(getOrderDetails(orderId));
 		} else if (!order.isPaid) {
 			if (!window.paypal) {
@@ -64,7 +67,7 @@ export default function OrderScreen({ match, history }) {
 				setSdkReady(true);
 			}
 		}
-	}, [dispatch, orderId, successPay, order, successDeliver]);
+	}, [dispatch, orderId, successPay, order, successDeliver, userInfo]);
 
 	const successPaymentHandler = (paymentResult) => {
 		dispatch(payOrder(orderId, paymentResult));
@@ -145,8 +148,8 @@ export default function OrderScreen({ match, history }) {
 													</Link>
 												</Col>
 												<Col md={4}>
-													{item.quantity} x ${item.price} = $
-													{item.quantity * item.price}
+													{item.quantity} x {formatter.format(item.price)} =
+													{formatter.format(item.quantity * item.price)}
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -165,35 +168,37 @@ export default function OrderScreen({ match, history }) {
 							<ListGroup.Item>
 								<Row>
 									<Col>Items</Col>
-									<Col>${order.itemsPrice}</Col>
+									<Col>{formatter.format(order?.itemsPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Shipping</Col>
-									<Col>${order.shippingPrice}</Col>
+									<Col>{formatter.format(order.shippingPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Tax</Col>
-									<Col>${order.taxPrice}</Col>
+									<Col>{formatter.format(order.taxPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Total</Col>
-									<Col>${order.totalPrice}</Col>
+									<Col>{formatter.format(order.totalPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							{!order.isPaid && (
 								<ListGroup.Item>
 									{loadingPay && <Loader />}
-									{!sdkReady ? (
+									{order.paymentMethod === 'cod' ? (
+										<Button disabled>CASH ON DELIVERY</Button>
+									) : !sdkReady ? (
 										<Loader />
 									) : (
 										<PayPalButton
-											amount={order.totalPrice}
+											amount={(order.totalPrice / 21000).toFixed(2)}
 											onSuccess={successPaymentHandler}
 										/>
 									)}

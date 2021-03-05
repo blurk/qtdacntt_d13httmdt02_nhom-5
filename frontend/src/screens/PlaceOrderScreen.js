@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { createdOrder } from '../actions/orderActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Message from '../components/Message';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import { USER_DETAILS_RESET } from '../constants/userConstants';
+import { formatter } from '../utils';
 
 export default function PlaceorderScreen({ history }) {
 	const cart = useSelector((state) => state.cart);
@@ -29,6 +32,8 @@ export default function PlaceorderScreen({ history }) {
 	useEffect(() => {
 		if (success) {
 			history.push(`/order/${order._id}`);
+			dispatch({ type: USER_DETAILS_RESET });
+			dispatch({ type: ORDER_CREATE_RESET });
 		}
 		// eslint-disable-next-line
 	}, [history, success]);
@@ -92,8 +97,8 @@ export default function PlaceorderScreen({ history }) {
 													</Link>
 												</Col>
 												<Col md={4}>
-													{item.quantity} x ${item.price} = $
-													{item.quantity * item.price}
+													{item.quantity} x {formatter.format(item.price)} =
+													{formatter.format(item.quantity * item.price)}
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -112,25 +117,25 @@ export default function PlaceorderScreen({ history }) {
 							<ListGroup.Item>
 								<Row>
 									<Col>Items</Col>
-									<Col>${cart.itemsPrice}</Col>
+									<Col>{formatter.format(cart.itemsPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Shipping</Col>
-									<Col>${cart.shippingPrice}</Col>
+									<Col>{formatter.format(cart.shippingPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Tax</Col>
-									<Col>${cart.taxPrice}</Col>
+									<Col>{formatter.format(cart.taxPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Total</Col>
-									<Col>${cart.totalPrice}</Col>
+									<Col>{formatter.format(cart.totalPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 

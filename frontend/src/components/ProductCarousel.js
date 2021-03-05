@@ -3,6 +3,7 @@ import { Carousel, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { listTopProduct } from '../actions/productActions';
+import { formatter } from '../utils';
 import Loader from './Loader';
 import Message from './Message';
 
@@ -29,7 +30,7 @@ export default function ProductCarousel() {
 						<Image src={p.image} alt={p.name} fluid />
 						<Carousel.Caption className='carousel-caption'>
 							<h2>
-								{p.name} ({p.price}₫)
+								{p.name} <br /> {formatter.format(p.price)}
 							</h2>
 						</Carousel.Caption>
 					</Link>
