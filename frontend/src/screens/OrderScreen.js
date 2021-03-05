@@ -42,9 +42,6 @@ export default function OrderScreen({ match, history }) {
 			history.push('/login');
 		}
 
-		order.paymentMethod === 'cod' &&
-			dispatch(payOrder(orderId, { isCOD: false }));
-
 		const addPayPalScript = async () => {
 			const { data: clientId } = await axios.get('/api/config/paypal');
 			const script = document.createElement('script');
@@ -73,7 +70,7 @@ export default function OrderScreen({ match, history }) {
 	}, [dispatch, orderId, successPay, order, successDeliver, userInfo]);
 
 	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(orderId, { ...paymentResult, isCOD: false }));
+		dispatch(payOrder(orderId, paymentResult));
 	};
 
 	const deliverHandler = () => {

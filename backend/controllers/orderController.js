@@ -68,24 +68,17 @@ const getOrderById = asyncHandler(async (request, response) => {
 const updateOrderToPaid = asyncHandler(async (request, response) => {
 	const order = await Order.findById(request.params.id);
 
-	console.log(request.body.isCOD);
-
 	if (order) {
 		order.isPaid = request.body.isCOD ? false : true;
 		order.paidAt = Date.now();
-		order.paymentResult = request.body.isCOD
+		order.paymentResult = request.body.id
 			? {
-					id: request.body.id,
-					status: 'PENDING',
-					update_time: Date(),
-					email_address: '',
-			  }
-			: {
 					id: request.body.id,
 					status: request.body.status,
 					update_time: request.body.update_time,
 					email_address: request.body.payer.email_address,
-			  };
+			  }
+			: {};
 
 		const updatedOrder = await order.save();
 
