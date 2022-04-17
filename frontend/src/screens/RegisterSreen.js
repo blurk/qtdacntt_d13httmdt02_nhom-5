@@ -45,50 +45,50 @@ export default function RegisterScreen({ location, history }) {
 			<Form onSubmit={submitHandler}>
 				{/* EMAIL */}
 				<Form.Group controlId='email'>
-					<Form.Label>Email Address</Form.Label>
+					<Form.Label>Email</Form.Label>
 					<Form.Control
 						type='email'
-						placeholder='Enter email'
+						placeholder='Nhập Email'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}></Form.Control>
 				</Form.Group>
 				{/*NAME*/}
 				<Form.Group controlId='name'>
-					<Form.Label>Name</Form.Label>
+					<Form.Label>Tên</Form.Label>
 					<Form.Control
 						type='name'
-						placeholder='Enter name'
+						placeholder='Nhập tên'
 						value={name}
 						onChange={(e) => setName(e.target.value)}></Form.Control>
 				</Form.Group>
 				{/* PASSWORD */}
 				<Form.Group controlId='password'>
-					<Form.Label>Password</Form.Label>
+					<Form.Label>Mật khẩu</Form.Label>
 					<Form.Control
 						type='password'
-						placeholder='Enter password'
+						placeholder='Nhập mật khẩu'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}></Form.Control>
 				</Form.Group>
 				{/* CONFIRM PASSWORD */}
 				<Form.Group controlId='confirmPassword'>
-					<Form.Label>Confirm Password</Form.Label>
+					<Form.Label>Nhập lại mật khẩu</Form.Label>
 					<Form.Control
 						type='password'
-						placeholder='Re-enter password'
+						placeholder='Nhập lại mật khẩu'
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
 				</Form.Group>
 
 				<Button type='submit' variant='primary'>
-					Register
+					Đăng ký
 				</Button>
 
 				<Row className='py-3'>
 					<Col>
-						Have an account?{' '}
+						Đã có tài khoản?{' '}
 						<Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-							Login
+							Đăng nhập
 						</Link>
 					</Col>
 				</Row>

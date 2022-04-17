@@ -41,7 +41,7 @@ export default function ProductScreen({ match, history }) {
 
 	useEffect(() => {
 		if (successProductReivew) {
-			alert('Review Subbmitted!');
+			alert('Đánh giá thành công!');
 			setRating(0);
 			setComment('');
 			dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
@@ -113,7 +113,7 @@ export default function ProductScreen({ match, history }) {
 										<Row>
 											<Col>Status: </Col>
 											<Col>
-												{product.countInStock > 0 ? 'In stock' : 'Out of stock'}
+												{product.countInStock > 0 ? ' Còn hàng ' : 'Đã hết hàng'}
 											</Col>
 										</Row>
 									</ListGroup.Item>
@@ -202,7 +202,7 @@ export default function ProductScreen({ match, history }) {
 										</Form>
 									) : (
 										<Message>
-											Please <Link to='/login'>Sign in</Link> to write a review
+											Please <Link to='/login'>Đăng nhập</Link> to write a review
 										</Message>
 									)}
 								</ListGroup.Item>

@@ -8,10 +8,10 @@ export default function CheckoutSteps({ step1, step2, step3, step4 }) {
 			<Nav.Item>
 				{step1 ? (
 					<LinkContainer to='/login'>
-						<Nav.Link>Sign In</Nav.Link>
+						<Nav.Link>Đăng nhập</Nav.Link>
 					</LinkContainer>
 				) : (
-					<Nav.Link disabled>Sign In</Nav.Link>
+					<Nav.Link disabled>Đăng nhập</Nav.Link>
 				)}
 			</Nav.Item>
 
@@ -28,20 +28,20 @@ export default function CheckoutSteps({ step1, step2, step3, step4 }) {
 			<Nav.Item>
 				{step3 ? (
 					<LinkContainer to='/payment'>
-						<Nav.Link>Payment</Nav.Link>
+						<Nav.Link>Thanh toán</Nav.Link>
 					</LinkContainer>
 				) : (
-					<Nav.Link disabled>Payment</Nav.Link>
+					<Nav.Link disabled>Thanh toán</Nav.Link>
 				)}
 			</Nav.Item>
 
 			<Nav.Item>
 				{step4 ? (
 					<LinkContainer to='/placeorder'>
-						<Nav.Link>Place Order</Nav.Link>
+						<Nav.Link>Đặt hàng</Nav.Link>
 					</LinkContainer>
 				) : (
-					<Nav.Link disabled>Place Order</Nav.Link>
+					<Nav.Link disabled>Đặt hàng</Nav.Link>
 				)}
 			</Nav.Item>
 		</Nav>

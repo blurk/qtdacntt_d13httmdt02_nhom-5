@@ -26,13 +26,13 @@ export default function PaymentScreen({ history }) {
 	return (
 		<FormContainer>
 			<CheckoutSteps step1 step2 step3 />
-			<h1>Payment Method</h1>
+			<h1>Hình thức thanh toán</h1>
 			<Form.Group>
-				<Form.Label as='legend'>Select method</Form.Label>
+				<Form.Label as='legend'>Chọn</Form.Label>
 				<Col>
 					<Form.Check
 						type='radio'
-						label='Paypal or Credit Card'
+						label='Paypal hoặc Thẻ tín dụng'
 						id='paypal'
 						name='paymentMethod'
 						value='paypal'
@@ -41,7 +41,7 @@ export default function PaymentScreen({ history }) {
 					/>
 					<Form.Check
 						type='radio'
-						label='Cash On Delivery(COD)'
+						label='Thanh toán khi nhận hàng(COD)'
 						id='cod'
 						name='paymentMethod'
 						value='cod'
@@ -51,7 +51,7 @@ export default function PaymentScreen({ history }) {
 			</Form.Group>
 			<Form onSubmit={submitHandler}>
 				<Button type='submit' variant='primary'>
-					Continue
+					Tiếp tục
 				</Button>
 			</Form>
 		</FormContainer>

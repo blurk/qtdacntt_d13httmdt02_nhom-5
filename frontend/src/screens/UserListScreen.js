@@ -34,7 +34,7 @@ export default function UserListScreen({ history }) {
 
 	return (
 		<>
-			<h1>Users</h1>
+			<h1>Người dùng</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -44,9 +44,9 @@ export default function UserListScreen({ history }) {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Name</th>
+							<th>Tên</th>
 							<th>Email</th>
-							<th>Admin</th>
+							<th>Là Admin</th>
 							<th></th>
 						</tr>
 					</thead>

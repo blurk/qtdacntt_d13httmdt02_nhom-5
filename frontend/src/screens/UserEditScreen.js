@@ -54,10 +54,10 @@ export default function UserEditScreen({ match, history }) {
 	return (
 		<>
 			<Link to='/admin/userList' className='btn btn-light my-3'>
-				Go Back
+				Quay lại
 			</Link>
 			<FormContainer>
-				<h1>Edit User</h1>
+				<h1>Chỉnh sửa người dùng</h1>
 				{loadingUpdate && <Loader />}
 				{errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
 				{loading ? (
@@ -68,19 +68,19 @@ export default function UserEditScreen({ match, history }) {
 					<Form onSubmit={submitHandler}>
 						{/* EMAIL */}
 						<Form.Group controlId='email'>
-							<Form.Label>Email Address</Form.Label>
+							<Form.Label>Email</Form.Label>
 							<Form.Control
 								type='email'
-								placeholder='Enter email'
+								placeholder='Nhập email'
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}></Form.Control>
 						</Form.Group>
 						{/*NAME*/}
 						<Form.Group controlId='name'>
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Tên</Form.Label>
 							<Form.Control
 								type='name'
-								placeholder='Enter name'
+								placeholder='Nhập tên'
 								value={name}
 								onChange={(e) => setName(e.target.value)}></Form.Control>
 						</Form.Group>
@@ -88,13 +88,13 @@ export default function UserEditScreen({ match, history }) {
 						<Form.Group controlId='isAdmin'>
 							<Form.Check
 								type='checkbox'
-								label='Is Admin'
+								label='Là Admin'
 								checked={isAdmin}
 								onChange={(e) => setIsAdmin(e.target.checked)}></Form.Check>
 						</Form.Group>
 
 						<Button type='submit' variant='primary'>
-							Update
+							Cập nhật
 						</Button>
 					</Form>
 				)}
