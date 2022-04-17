@@ -30,7 +30,7 @@ export default function PaymentScreen({ history }) {
 			<Form.Group>
 				<Form.Label as='legend'>Chọn</Form.Label>
 				<Col>
-					<Form.Check
+					{/* <Form.Check
 						type='radio'
 						label='Paypal hoặc Thẻ tín dụng'
 						id='paypal'
@@ -38,7 +38,7 @@ export default function PaymentScreen({ history }) {
 						value='paypal'
 						checked
 						onChange={(e) => setPaymentMethod(e.target.value)}
-					/>
+					/> */}
 					<Form.Check
 						type='radio'
 						label='Thanh toán khi nhận hàng(COD)'

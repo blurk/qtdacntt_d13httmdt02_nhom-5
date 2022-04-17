@@ -65,6 +65,11 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
 	localStorage.removeItem('userInfo');
+	localStorage.removeItem('payment');
+	localStorage.removeItem('cartItems');
+	localStorage.removeItem('paymentMethod');
+	localStorage.removeItem('shippingAddress');
+	window.location.pathname = '/';
 	dispatch({
 		type: USER_LOGOUT,
 	});

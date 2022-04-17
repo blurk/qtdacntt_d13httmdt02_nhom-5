@@ -6,6 +6,11 @@ import { Route } from 'react-router-dom';
 import { logout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 
+function getCartItemsCount() {
+	const cartItems = localStorage.getItem('cartItems') ?? JSON.stringify([]);
+	return JSON.parse(cartItems).length;
+};
+
 export default function Header() {
 	const dispatch = useDispatch();
 
@@ -15,6 +20,9 @@ export default function Header() {
 	const logoutHandler = () => {
 		dispatch(logout());
 	};
+
+	const cartItemsCount = getCartItemsCount();
+
 	return (
 		<header>
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
@@ -28,7 +36,7 @@ export default function Header() {
 						<Nav className='ml-auto'>
 							<LinkContainer to='/cart'>
 								<Nav.Link>
-									<i className='fas fa-shopping-cart'></i> Giỏ hàng
+									<i className='fas fa-shopping-cart'></i> Giỏ hàng ({cartItemsCount ?? 0})
 								</Nav.Link>
 							</LinkContainer>
 							{userInfo ? (

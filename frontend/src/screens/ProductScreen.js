@@ -66,7 +66,7 @@ export default function ProductScreen({ match, history }) {
 	return (
 		<>
 			<Link className='btn btn-light my-3' to='/'>
-				Go Back
+				Quay Lại
 			</Link>
 			{loading ? (
 				<Loader />
@@ -91,10 +91,10 @@ export default function ProductScreen({ match, history }) {
 									/>
 								</ListGroup.Item>
 								<ListGroup.Item>
-									Price: {formatter.format(product.price)}
+									Đơn giá: {formatter.format(product.price)}
 								</ListGroup.Item>
 								<ListGroup.Item>
-									Description: {product.description}
+									Mô tả: {product.description}
 								</ListGroup.Item>
 							</ListGroup>
 						</Col>
@@ -103,7 +103,7 @@ export default function ProductScreen({ match, history }) {
 								<ListGroup variant='flush'>
 									<ListGroup.Item>
 										<Row>
-											<Col>Price: </Col>
+											<Col>Đơn giá: </Col>
 											<Col>
 												<strong>{formatter.format(product.price)}</strong>
 											</Col>
@@ -111,7 +111,7 @@ export default function ProductScreen({ match, history }) {
 									</ListGroup.Item>
 									<ListGroup.Item>
 										<Row>
-											<Col>Status: </Col>
+											<Col>Trạng thái: </Col>
 											<Col>
 												{product.countInStock > 0 ? ' Còn hàng ' : 'Đã hết hàng'}
 											</Col>
@@ -121,7 +121,7 @@ export default function ProductScreen({ match, history }) {
 									{product.countInStock > 0 && (
 										<ListGroup.Item>
 											<Row>
-												<Col>Quantity</Col>
+												<Col>Số lượng </Col>
 												<Col>
 													<Form.Control
 														as='select'
@@ -145,7 +145,7 @@ export default function ProductScreen({ match, history }) {
 											className='btn-block'
 											type='button'
 											disabled={!product.countInStock}>
-											Add to cart
+											Cho vào giỏ hàng
 										</Button>
 									</ListGroup.Item>
 								</ListGroup>
@@ -154,8 +154,8 @@ export default function ProductScreen({ match, history }) {
 					</Row>
 					<Row>
 						<Col md={6}>
-							<h2>Reviews</h2>
-							{product.reviews.length === 0 && <Message>No Reviews</Message>}
+							<h2>Đánh giá</h2>
+							{product.reviews.length === 0 && <Message>Chưa có đánh giá</Message>}
 							<ListGroup variant='flush'>
 								{product.reviews.map((r) => (
 									<ListGroup.Item key={r._id}>
@@ -166,28 +166,28 @@ export default function ProductScreen({ match, history }) {
 									</ListGroup.Item>
 								))}
 								<ListGroup.Item>
-									<h2>Write a Customer Review</h2>
+									<h2> Viết đánh giá của bạn </h2>
 									{errorProductReview && (
 										<Message variant='danger'>{errorProductReview}</Message>
 									)}
 									{userInfo ? (
 										<Form onSubmit={submitHandler}>
 											<Form.Group controlId='rating'>
-												<Form.Label>Rating</Form.Label>
+												<Form.Label>Đánh giá</Form.Label>
 												<Form.Control
 													as='select'
 													value={rating}
 													onChange={(e) => setRating(e.target.value)}>
-													<option value=''>Select...</option>
-													<option value='1'>1 - Poor</option>
-													<option value='2'>2 - Fair</option>
-													<option value='3'>3 - Good</option>
-													<option value='4'>4 - Very Good</option>
-													<option value='5'>5- Excellent</option>
+													<option value=''>Chọn</option>
+													<option value='1'>1 - Tệ</option>
+													<option value='2'>2 - Ổn</option>
+													<option value='3'>3 - Tốt</option>
+													<option value='4'>4 - Rất Tốt</option>
+													<option value='5'>5- Tuyệt vời </option>
 												</Form.Control>
 											</Form.Group>
 											<Form.Group controlId='comment'>
-												<Form.Label>Comment</Form.Label>
+												<Form.Label>Bình luận</Form.Label>
 												<Form.Control
 													as='textarea'
 													row='3'
@@ -197,12 +197,12 @@ export default function ProductScreen({ match, history }) {
 													}></Form.Control>
 											</Form.Group>
 											<Button type='submit' variant='primary'>
-												Submit
+												Gửi bình luận
 											</Button>
 										</Form>
 									) : (
 										<Message>
-											Please <Link to='/login'>Đăng nhập</Link> to write a review
+											Hãy <Link to='/login'>Đăng nhập</Link> để đánh giá
 										</Message>
 									)}
 								</ListGroup.Item>

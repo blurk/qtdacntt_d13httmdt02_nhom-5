@@ -116,7 +116,7 @@ export default function OrderScreen({ match, history }) {
 							<h2>Phương thức thanh toán</h2>
 							<p>
 								<strong>Phương thức: </strong>
-								{order.paymentMethod}
+								{order.paymentMethod === 'cod' ? 'Thanh toán khi đặt hàng' : 'Bằng thẻ'}
 							</p>
 							{order.isPaid ? (
 								<Message variant='success'>Thanh toán vào {order.paidAt}</Message>
