@@ -90,7 +90,7 @@ export default function OrderScreen({ match, history }) {
 						<ListGroup.Item>
 							<h2>Shipping</h2>
 							<p>
-								<strong>Name: </strong>
+								<strong>Tên: </strong>
 								{order.user.name}
 							</p>
 							<p>
@@ -98,37 +98,37 @@ export default function OrderScreen({ match, history }) {
 								<a href={`mailto:${order.user.email}`}> {order.user.email}</a>
 							</p>
 							<p>
-								<strong>Address: </strong>
+								<strong>Địa chỉ: </strong>
 								{order.shippingAddress.address},{order.shippingAddress.city},
 								{order.shippingAddress.postalCode},
 								{order.shippingAddress.country},
 							</p>
 							{order.isDelivered ? (
 								<Message variant='success'>
-									Delivered on {order.deliveredAt}
+									Đã giao vào {order.deliveredAt}
 								</Message>
 							) : (
-								<Message variant='danger'>Not Delivered </Message>
+								<Message variant='danger'>Chưa giao</Message>
 							)}
 						</ListGroup.Item>
 
 						<ListGroup.Item>
-							<h2>Payment Method</h2>
+							<h2>Phương thức thanh toán</h2>
 							<p>
-								<strong>Method: </strong>
+								<strong>Phương thức: </strong>
 								{order.paymentMethod}
 							</p>
 							{order.isPaid ? (
-								<Message variant='success'>Paid on {order.paidAt}</Message>
+								<Message variant='success'>Thanh toán vào {order.paidAt}</Message>
 							) : (
-								<Message variant='danger'>Not Paid</Message>
+								<Message variant='danger'>Chưa thanh toán</Message>
 							)}
 						</ListGroup.Item>
 
 						<ListGroup.Item>
-							<h2>Order Items: </h2>
+							<h2>Sản phẩm đặt: </h2>
 							{order.orderItems.length === 0 ? (
-								<Message>Order is empty</Message>
+								<Message>Đang trống</Message>
 							) : (
 								<ListGroup variant='flush'>
 									{order.orderItems.map((item, index) => (
@@ -163,11 +163,11 @@ export default function OrderScreen({ match, history }) {
 					<Card>
 						<ListGroup variant='flush'>
 							<ListGroup.Item>
-								<h2>Order Summary</h2>
+								<h2>Thông tin đơn hàng</h2>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
-									<Col>Items</Col>
+									<Col>Sản phẩm</Col>
 									<Col>{formatter.format(order?.itemsPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
@@ -179,13 +179,13 @@ export default function OrderScreen({ match, history }) {
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
-									<Col>Tax</Col>
+									<Col>Thuế</Col>
 									<Col>{formatter.format(order.taxPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
-									<Col>Total</Col>
+									<Col>Tổng cộng</Col>
 									<Col>{formatter.format(order.totalPrice)}</Col>
 								</Row>
 							</ListGroup.Item>
@@ -193,7 +193,7 @@ export default function OrderScreen({ match, history }) {
 								<ListGroup.Item>
 									{loadingPay && <Loader />}
 									{order.paymentMethod === 'cod' ? (
-										<Button disabled>CASH ON DELIVERY</Button>
+										<Button disabled>Thanh toán khi nhận hàng</Button>
 									) : !sdkReady ? (
 										<Loader />
 									) : (
@@ -208,14 +208,14 @@ export default function OrderScreen({ match, history }) {
 							{loadingDeliver && <Loader />}
 							{userInfo &&
 								userInfo.isAdmin &&
-								order.isPaid &&
+								order.paymentMethod !== 'paypal' &&
 								!order.isDelivered && (
 									<ListGroup.Item>
 										<Button
 											type='button'
 											className='btn btn-block'
 											onClick={deliverHandler}>
-											Mark as delivered
+											Đánh giấu đã giao hàng
 										</Button>
 									</ListGroup.Item>
 								)}

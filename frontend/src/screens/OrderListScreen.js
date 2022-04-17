@@ -24,7 +24,7 @@ export default function OrderListScreen({ history }) {
 
 	return (
 		<>
-			<h1>Orders</h1>
+			<h1>Đơn hàng</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -34,11 +34,11 @@ export default function OrderListScreen({ history }) {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>USER</th>
-							<th>DATE</th>
-							<th>TOTAL PRICE</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
+							<th>Người dùng</th>
+							<th>Thời gian</th>
+							<th>Tổng giá</th>
+							<th>Đã thanh toán</th>
+							<th>Đã giao hàng</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -66,7 +66,7 @@ export default function OrderListScreen({ history }) {
 								<td>
 									<LinkContainer to={`/order/${order._id}`}>
 										<Button variant='light' className='btn-sm'>
-											Details
+											Chi tiết
 										</Button>
 									</LinkContainer>
 								</td>

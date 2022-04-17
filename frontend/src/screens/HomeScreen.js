@@ -31,10 +31,10 @@ export default function HomeScreen({ match }) {
 				<ProductCarousel />
 			) : (
 				<Link to='/' className='btn btn-light'>
-					Go Back
+					Quay Lại
 				</Link>
 			)}
-			<h1>Lastest Products</h1>
+			<h1>Sản phẩm mới nhất</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (

@@ -40,10 +40,10 @@ export default function CartScreen({ match, location, history }) {
 	return (
 		<Row>
 			<Col md={8}>
-				<h1>Shopping Cart</h1>
+				<h1>Giỏ hàng</h1>
 				{cartItems.length === 0 ? (
 					<Message>
-						Your cart is empty <Link to='/'>Go Back</Link>
+						Giỏ của bạn đang trống<Link to='/'>Quay lại</Link>
 					</Message>
 				) : (
 					<ListGroup variant='flush'>
@@ -90,8 +90,8 @@ export default function CartScreen({ match, location, history }) {
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
 							<h2>
-								Subtotal (
-								{cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
+								Hiện có:&nbsp;
+								{cartItems.reduce((acc, item) => acc + item.quantity, 0)} sản phẩm
 							</h2>
 							{formatter.format(
 								cartItems
@@ -105,7 +105,7 @@ export default function CartScreen({ match, location, history }) {
 								className='btn-block'
 								disabled={cartItems.length < 1}
 								onClick={checkoutHandler}>
-								Proceed To Checkout
+								Thanh toán
 							</Button>
 						</ListGroup.Item>
 					</ListGroup>

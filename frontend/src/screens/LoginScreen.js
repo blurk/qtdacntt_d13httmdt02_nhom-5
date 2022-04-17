@@ -31,13 +31,13 @@ export default function LoginScreen({ location, history }) {
 
 	return (
 		<FormContainer>
-			<h1>Sign In</h1>
+			<h1>Đăng nhập</h1>
 			{error && <Message variant='danger'>{error}</Message>}
 			{loading && <Loader />}
 			<Form onSubmit={submitHandler}>
 				{/* EMAIL */}
 				<Form.Group controlId='email'>
-					<Form.Label>Email Address</Form.Label>
+					<Form.Label>Email</Form.Label>
 					<Form.Control
 						type='email'
 						placeholder='Enter email'
@@ -46,7 +46,7 @@ export default function LoginScreen({ location, history }) {
 				</Form.Group>
 				{/* PASSWORD */}
 				<Form.Group controlId='password'>
-					<Form.Label>Password</Form.Label>
+					<Form.Label>Mật khẩu</Form.Label>
 					<Form.Control
 						type='password'
 						placeholder='Enter password'
@@ -55,15 +55,15 @@ export default function LoginScreen({ location, history }) {
 				</Form.Group>
 
 				<Button type='submit' variant='primary'>
-					Sign In
+					Đăng nhập
 				</Button>
 
 				<Row className='py-3'>
 					<Col>
-						New Customer?{' '}
+						Chưa có tài khoản?{' '}
 						<Link
 							to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-							Register
+							Đăng ký
 						</Link>
 					</Col>
 				</Row>
