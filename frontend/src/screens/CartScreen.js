@@ -1,49 +1,44 @@
-import React, { useEffect } from 'react';
-import {
-	Button,
-	Card,
-	Col,
-	Form,
-	Image,
-	ListGroup,
-	Row,
-} from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addToCart, removeFromCart } from '../actions/cartActions';
-import Message from '../components/Message';
-import { formatter } from '../utils';
+import React, { useEffect } from 'react'
+import { Button, Card, Col, Form, Image, ListGroup, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
+import { addToCart, removeFromCart } from '../actions/cartActions'
+import Message from '../components/Message'
+import { formatter } from '../utils'
 
 export default function CartScreen({ match, location, history }) {
-	const productId = match.params.id;
+	const { t } = useTranslation()
+	const productId = match.params.id
 
 	//location for ?quantity=1
-	const quantity = location.search ? +location.search.split('=')[1] : 1;
+	const quantity = location.search ? +location.search.split('=')[1] : 1
 
-	const dispatch = useDispatch();
-	const { cartItems } = useSelector((state) => state.cart);
+	const dispatch = useDispatch()
+	const { cartItems } = useSelector((state) => state.cart)
 
 	useEffect(() => {
 		if (productId) {
-			dispatch(addToCart(productId, quantity));
+			dispatch(addToCart(productId, quantity))
 		}
-	}, [dispatch, productId, quantity]);
+	}, [dispatch, productId, quantity])
 
 	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id));
-	};
+		dispatch(removeFromCart(id))
+	}
 
 	const checkoutHandler = () => {
-		history.push('/login?redirect=shipping');
-	};
+		history.push('/login?redirect=shipping')
+	}
 
 	return (
 		<Row>
 			<Col md={8}>
-				<h1>Shopping Cart</h1>
+				<h1>{t('shoppingCart')}</h1>
 				{cartItems.length === 0 ? (
 					<Message>
-						Your cart is empty <Link to='/'>Go Back</Link>
+						{t('cartEmpty')} <Link to='/'>{t('button.goBack')}</Link>
 					</Message>
 				) : (
 					<ListGroup variant='flush'>
@@ -90,8 +85,9 @@ export default function CartScreen({ match, location, history }) {
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
 							<h2>
-								Subtotal (
-								{cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
+								{t('subTotal')} (
+								{cartItems.reduce((acc, item) => acc + item.quantity, 0)}){' '}
+								{t('items')}
 							</h2>
 							{formatter.format(
 								cartItems
@@ -105,12 +101,12 @@ export default function CartScreen({ match, location, history }) {
 								className='btn-block'
 								disabled={cartItems.length < 1}
 								onClick={checkoutHandler}>
-								Proceed To Checkout
+								{t('button.proceedToCheckout')}
 							</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Card>
 			</Col>
 		</Row>
-	);
+	)
 }

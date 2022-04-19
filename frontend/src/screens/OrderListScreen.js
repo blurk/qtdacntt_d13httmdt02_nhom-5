@@ -1,30 +1,32 @@
-import React, { useEffect } from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
-import { listOrders } from '../actions/orderActions';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import { formatter } from '../utils';
+import React, { useEffect } from 'react'
+import { Button, Table } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useTranslation } from 'react-i18next'
+import { listOrders } from '../actions/orderActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import { formatDate, formatter } from '../utils'
 
 export default function OrderListScreen({ history }) {
-	const { loading, error, orders } = useSelector((state) => state.orderList);
+	const { loading, error, orders } = useSelector((state) => state.orderList)
 
-	const { userInfo } = useSelector((state) => state.userLogin);
+	const { userInfo } = useSelector((state) => state.userLogin)
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
+	const { t, i18n } = useTranslation()
 
 	useEffect(() => {
 		if (userInfo && userInfo.isAdmin) {
-			dispatch(listOrders());
+			dispatch(listOrders())
 		} else {
-			history.push('/login');
+			history.push('/login')
 		}
-	}, [dispatch, history, userInfo]);
+	}, [dispatch, history, userInfo])
 
 	return (
 		<>
-			<h1>Orders</h1>
+			<h1>{t('header.admin.orders')}</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -34,11 +36,11 @@ export default function OrderListScreen({ history }) {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>USER</th>
-							<th>DATE</th>
-							<th>TOTAL PRICE</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
+							<th>{t('admin.list.user')}</th>
+							<th>{t('admin.list.date')}</th>
+							<th>{t('admin.list.totalPrice')}</th>
+							<th>{t('admin.list.paid')}</th>
+							<th>{t('admin.list.delivered')}</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -47,26 +49,26 @@ export default function OrderListScreen({ history }) {
 							<tr key={order._id}>
 								<td>{order._id}</td>
 								<td>{order.user && order.user.name}</td>
-								<td>{order.createdAt.substring(0, 10)}</td>
+								<td>{formatDate(order.createdAt, i18n.language)}</td>
 								<td>{formatter.format(order.totalPrice)}</td>
 								<td>
 									{order.isPaid ? (
-										order.paidAt.substring(0, 10)
+										formatDate(order.paidAt, i18n.language)
 									) : (
 										<i className='fas fa-times' style={{ color: 'red' }}></i>
 									)}
 								</td>
 								<td>
 									{order.isDelivered ? (
-										order.deliveredAt.substring(0, 10)
+										formatDate(order.deliveredAt, i18n.language)
 									) : (
 										<i className='fas fa-times' style={{ color: 'red' }}></i>
 									)}
 								</td>
 								<td>
 									<LinkContainer to={`/order/${order._id}`}>
-										<Button variant='light' className='btn-sm'>
-											Details
+										<Button variant='info' className='btn-sm'>
+											{t('button.details')}
 										</Button>
 									</LinkContainer>
 								</td>
@@ -76,5 +78,5 @@ export default function OrderListScreen({ history }) {
 				</Table>
 			)}
 		</>
-	);
+	)
 }

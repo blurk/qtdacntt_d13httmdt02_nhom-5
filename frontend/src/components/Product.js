@@ -1,10 +1,13 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Rating from '../components/Rating';
-import { formatter } from '../utils';
+import React from 'react'
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
+import Rating from '../components/Rating'
+import { formatter } from '../utils'
 
 export default function Product({ product }) {
+	const { t } = useTranslation()
 	return (
 		<Card className='my-3 p-3 rounded'>
 			<Link to={`/product/${product._id}`}>
@@ -19,13 +22,13 @@ export default function Product({ product }) {
 				</Link>
 				<Card.Text as='div'>
 					<Rating
-						value={+product.rating}
-						text={`${product.numReviews} reviews`}
+						value={Number(product?.rating ?? 0)}
+						text={`${product.numReviews} ${t('review.reviews')}`}
 					/>
 				</Card.Text>
 
 				<Card.Text as='h5'>{formatter.format(product.price)}</Card.Text>
 			</Card.Body>
 		</Card>
-	);
+	)
 }

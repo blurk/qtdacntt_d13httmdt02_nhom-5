@@ -1,27 +1,30 @@
-import React, { useEffect } from 'react';
-import { Carousel, Image } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { listTopProduct } from '../actions/productActions';
-import { formatter } from '../utils';
-import Loader from './Loader';
-import Message from './Message';
+import React, { useEffect } from 'react'
+import { Carousel, Image } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
+import { listTopProduct } from '../actions/productActions'
+import { formatter } from '../utils'
+import Loader from './Loader'
+import Message from './Message'
 
 export default function ProductCarousel() {
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
+	const { t } = useTranslation()
 
 	const { loading, error, products } = useSelector(
 		(state) => state.producTopRated
-	);
+	)
 
 	useEffect(() => {
-		dispatch(listTopProduct());
-	}, [dispatch]);
+		dispatch(listTopProduct())
+	}, [dispatch])
 
 	return loading ? (
 		<Loader />
 	) : error ? (
-		<Message variant='danger'>{error}</Message>
+		<Message variant='danger'>{t('error')}</Message>
 	) : (
 		<Carousel pause='hover' className='bg-dark'>
 			{products.map((p) => (
@@ -37,5 +40,5 @@ export default function ProductCarousel() {
 				</Carousel.Item>
 			))}
 		</Carousel>
-	);
+	)
 }

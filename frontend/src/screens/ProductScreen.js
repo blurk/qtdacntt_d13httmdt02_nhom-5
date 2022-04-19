@@ -1,77 +1,71 @@
-import React, { useEffect, useState } from 'react';
-import {
-	Button,
-	Card,
-	Col,
-	Form,
-	Image,
-	ListGroup,
-	Row,
-} from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Col, Form, Image, ListGroup, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 import {
 	createProductReview,
-	listProductDetail,
-} from '../actions/productActions';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import Meta from '../components/Meta';
-import Rating from '../components/Rating';
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
-import { formatter } from '../utils';
+	listProductDetail
+} from '../actions/productActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import Meta from '../components/Meta'
+import Rating from '../components/Rating'
+import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import { formatDate, formatter } from '../utils'
 
 export default function ProductScreen({ match, history }) {
-	const [quantity, setQuantity] = useState(1);
-	const [rating, setRating] = useState(0);
-	const [comment, setComment] = useState('');
+	const [quantity, setQuantity] = useState(1)
+	const [rating, setRating] = useState(0)
+	const [comment, setComment] = useState('')
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
+
+	const { t, i18n } = useTranslation()
 
 	const { loading, error, product } = useSelector(
 		(state) => state.productDetail
-	);
+	)
 
-	const {
-		success: successProductReivew,
-		error: errorProductReview,
-	} = useSelector((state) => state.productCreateReivew);
+	const { success: successProductReivew, error: errorProductReview } =
+		useSelector((state) => state.productCreateReivew)
 
-	const { userInfo } = useSelector((state) => state.userLogin);
+	const { userInfo } = useSelector((state) => state.userLogin)
 
 	useEffect(() => {
 		if (successProductReivew) {
-			alert('Review Subbmitted!');
-			setRating(0);
-			setComment('');
-			dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+			alert('Review Subbmitted!')
+			setRating(0)
+			setComment('')
+			dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
 		}
-		dispatch(listProductDetail(match.params.id));
-	}, [dispatch, match, successProductReivew]);
+		dispatch(listProductDetail(match.params.id))
+	}, [dispatch, match, successProductReivew])
 
 	const addToCartHandler = () => {
-		history.push(`/cart/${match.params.id}?quantity=${quantity}`);
-	};
+		history.push(`/cart/${match.params.id}?quantity=${quantity}`)
+	}
 
 	const submitHandler = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		dispatch(
 			createProductReview(match.params.id, {
 				rating,
-				comment,
+				comment
 			})
-		);
-	};
+		)
+	}
 
 	return (
 		<>
-			<Link className='btn btn-light my-3' to='/'>
-				Go Back
+			<Link className='btn btn-dark my-3' to='/'>
+				{t('button.goBack')}
 			</Link>
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<Message variant='danger'>{error}</Message>
+				<Message variant='danger'>{t('error')}</Message>
 			) : (
 				<>
 					<Meta title={product.name} description={product.description} />
@@ -87,14 +81,14 @@ export default function ProductScreen({ match, history }) {
 								<ListGroup.Item>
 									<Rating
 										value={+product.rating}
-										text={`${product.numReviews} reviews`}
+										text={`${product.numReviews} ${t('review')}`}
 									/>
 								</ListGroup.Item>
 								<ListGroup.Item>
-									Price: {formatter.format(product.price)}
+									{t('price')}: {formatter.format(product.price)}
 								</ListGroup.Item>
 								<ListGroup.Item>
-									Description: {product.description}
+									{t('description')}: {product.description}
 								</ListGroup.Item>
 							</ListGroup>
 						</Col>
@@ -103,7 +97,7 @@ export default function ProductScreen({ match, history }) {
 								<ListGroup variant='flush'>
 									<ListGroup.Item>
 										<Row>
-											<Col>Price: </Col>
+											<Col>{t('price')}: </Col>
 											<Col>
 												<strong>{formatter.format(product.price)}</strong>
 											</Col>
@@ -111,9 +105,11 @@ export default function ProductScreen({ match, history }) {
 									</ListGroup.Item>
 									<ListGroup.Item>
 										<Row>
-											<Col>Status: </Col>
+											<Col>{t('status')}: </Col>
 											<Col>
-												{product.countInStock > 0 ? 'In stock' : 'Out of stock'}
+												{product.countInStock > 0
+													? t('stock.in')
+													: t('stock.out')}
 											</Col>
 										</Row>
 									</ListGroup.Item>
@@ -121,7 +117,7 @@ export default function ProductScreen({ match, history }) {
 									{product.countInStock > 0 && (
 										<ListGroup.Item>
 											<Row>
-												<Col>Quantity</Col>
+												<Col>{t('quantity')}</Col>
 												<Col>
 													<Form.Control
 														as='select'
@@ -145,7 +141,7 @@ export default function ProductScreen({ match, history }) {
 											className='btn-block'
 											type='button'
 											disabled={!product.countInStock}>
-											Add to cart
+											{t('button.addToCart')}
 										</Button>
 									</ListGroup.Item>
 								</ListGroup>
@@ -154,41 +150,45 @@ export default function ProductScreen({ match, history }) {
 					</Row>
 					<Row>
 						<Col md={6}>
-							<h2>Reviews</h2>
-							{product.reviews.length === 0 && <Message>No Reviews</Message>}
+							<h2 className='text-uppercase mt-5'>{t('review.reviews')}</h2>
+							{product.reviews.length === 0 && (
+								<Message>{t('review.no')}</Message>
+							)}
 							<ListGroup variant='flush'>
 								{product.reviews.map((r) => (
 									<ListGroup.Item key={r._id}>
 										<strong>{r.name}</strong>
 										<Rating value={r.rating} />
-										<p>{r.createdAt.substring(0, 10)}</p>
+										<p>{formatDate(r.createdAt, i18n.language)}</p>
 										<p>{r.comment}</p>
 									</ListGroup.Item>
 								))}
 								<ListGroup.Item>
-									<h2>Write a Customer Review</h2>
+									<h2>{t('review.write')}</h2>
 									{errorProductReview && (
 										<Message variant='danger'>{errorProductReview}</Message>
 									)}
 									{userInfo ? (
 										<Form onSubmit={submitHandler}>
 											<Form.Group controlId='rating'>
-												<Form.Label>Rating</Form.Label>
+												<Form.Label>{t('review.rating')}</Form.Label>
 												<Form.Control
+													required
 													as='select'
 													value={rating}
 													onChange={(e) => setRating(e.target.value)}>
-													<option value=''>Select...</option>
-													<option value='1'>1 - Poor</option>
-													<option value='2'>2 - Fair</option>
-													<option value='3'>3 - Good</option>
-													<option value='4'>4 - Very Good</option>
-													<option value='5'>5- Excellent</option>
+													<option value=''>{t('review.select.label')}</option>
+													<option value='1'>1 - {t('review.select.1')}</option>
+													<option value='2'>2 - {t('review.select.2')}</option>
+													<option value='3'>3 - {t('review.select.3')}</option>
+													<option value='4'>4 - {t('review.select.4')}</option>
+													<option value='5'>5 - {t('review.select.5')}</option>
 												</Form.Control>
 											</Form.Group>
 											<Form.Group controlId='comment'>
-												<Form.Label>Comment</Form.Label>
+												<Form.Label>{t('review.comment')}</Form.Label>
 												<Form.Control
+													required
 													as='textarea'
 													row='3'
 													value={comment}
@@ -197,12 +197,14 @@ export default function ProductScreen({ match, history }) {
 													}></Form.Control>
 											</Form.Group>
 											<Button type='submit' variant='primary'>
-												Submit
+												{t('button.submit')}
 											</Button>
 										</Form>
 									) : (
 										<Message>
-											Please <Link to='/login'>Sign in</Link> to write a review
+											{t('review.message.p1')}{' '}
+											<Link to='/login'> {t('button.signIn')}</Link>{' '}
+											{t('review.message.p2')}
 										</Message>
 									)}
 								</ListGroup.Item>
@@ -212,5 +214,5 @@ export default function ProductScreen({ match, history }) {
 				</>
 			)}
 		</>
-	);
+	)
 }

@@ -1,53 +1,56 @@
-import React, { useEffect } from 'react';
-import { Button, Col, Row, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, { useEffect } from 'react'
+import { Button, Col, Row, Table } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useTranslation } from 'react-i18next'
 import {
 	createProduct,
 	deletePrtoduct,
-	listProducts,
-} from '../actions/productActions';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import Paginate from '../components/Paginate';
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
-import { formatter } from '../utils';
+	listProducts
+} from '../actions/productActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import Paginate from '../components/Paginate'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { formatter } from '../utils'
 
 export default function ProductListScreen({ history, match }) {
-	const pageNumber = match.params.pageNumber || 1;
+	const pageNumber = match.params.pageNumber || 1
+
+	const { t } = useTranslation()
 
 	const { loading, error, products, page, pages } = useSelector(
 		(state) => state.productList
-	);
+	)
 
 	const {
 		loading: loadingDelete,
 		error: errorDelete,
-		success: successDelete,
-	} = useSelector((state) => state.productDelete);
+		success: successDelete
+	} = useSelector((state) => state.productDelete)
 
 	const {
 		loading: loadingCreate,
 		error: errorCreate,
 		success: successCreate,
-		product: createdProduct,
-	} = useSelector((state) => state.productCreate);
+		product: createdProduct
+	} = useSelector((state) => state.productCreate)
 
-	const { userInfo } = useSelector((state) => state.userLogin);
+	const { userInfo } = useSelector((state) => state.userLogin)
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch({ type: PRODUCT_CREATE_RESET });
+		dispatch({ type: PRODUCT_CREATE_RESET })
 
 		if (!userInfo || !userInfo.isAdmin) {
-			history.push('/login');
+			history.push('/login')
 		}
 
 		if (successCreate) {
-			history.push(`/admin/product/${createdProduct._id}/edit`);
+			history.push(`/admin/product/${createdProduct._id}/edit`)
 		} else {
-			dispatch(listProducts('', pageNumber));
+			dispatch(listProducts('', pageNumber))
 		}
 	}, [
 		dispatch,
@@ -56,30 +59,30 @@ export default function ProductListScreen({ history, match }) {
 		successDelete,
 		successCreate,
 		createdProduct,
-		pageNumber,
-	]);
+		pageNumber
+	])
 
 	const deleteHandler = (id) => {
 		if (window.confirm('Are you sure?')) {
 			// DELETE PRODUCT
-			dispatch(deletePrtoduct(id));
+			dispatch(deletePrtoduct(id))
 		}
-	};
+	}
 
 	const createProductHandler = () => {
 		// CREATE PRODUCT
-		dispatch(createProduct());
-	};
+		dispatch(createProduct())
+	}
 
 	return (
 		<>
 			<Row className='align-items-center'>
 				<Col>
-					<h1>Products</h1>
+					<h1>{t('header.admin.products')}</h1>
 				</Col>
 				<Col className='text-right'>
 					<Button className='my-3' onClick={createProductHandler}>
-						<i className='fas fa-plus'></i> Create Product
+						<i className='fas fa-plus'></i> {t('button.create.product')}
 					</Button>
 				</Col>
 			</Row>
@@ -90,17 +93,17 @@ export default function ProductListScreen({ history, match }) {
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<Message variant='danger'>{error}</Message>
+				<Message variant='danger'>{t('error')}</Message>
 			) : (
 				<>
 					<Table responsive striped hover bordered className='table-sm'>
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Name</th>
-								<th>Price</th>
-								<th>Category</th>
-								<th>Brand</th>
+								<th>{t('input.name.label')}</th>
+								<th>{t('input.price.label')}</th>
+								<th>{t('input.category.label')}</th>
+								<th>{t('input.brand.label')}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -132,5 +135,5 @@ export default function ProductListScreen({ history, match }) {
 				</>
 			)}
 		</>
-	);
+	)
 }

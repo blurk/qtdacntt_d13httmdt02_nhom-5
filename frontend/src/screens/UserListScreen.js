@@ -1,40 +1,43 @@
-import React, { useEffect } from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
-import { deleteUser, listUsers } from '../actions/userActions';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
+import React, { useEffect } from 'react'
+import { Button, Table } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
+import { deleteUser, listUsers } from '../actions/userActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 export default function UserListScreen({ history }) {
-	const userList = useSelector((state) => state.userList);
-	const { loading, error, users } = userList;
+	const userList = useSelector((state) => state.userList)
+	const { loading, error, users } = userList
 
-	const userLogin = useSelector((state) => state.userLogin);
-	const { userInfo } = userLogin;
+	const userLogin = useSelector((state) => state.userLogin)
+	const { userInfo } = userLogin
 
-	const userDelete = useSelector((state) => state.userDelete);
-	const { success: successDelete } = userDelete;
+	const userDelete = useSelector((state) => state.userDelete)
+	const { success: successDelete } = userDelete
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
 	useEffect(() => {
 		if (userInfo && userInfo.isAdmin) {
-			dispatch(listUsers());
+			dispatch(listUsers())
 		} else {
-			history.push('/login');
+			history.push('/login')
 		}
-	}, [dispatch, history, successDelete, userInfo]);
+	}, [dispatch, history, successDelete, userInfo])
 
 	const deleteHandler = (id) => {
 		if (window.confirm('Are you sure?')) {
-			dispatch(deleteUser(id));
+			dispatch(deleteUser(id))
 		}
-	};
+	}
+
+	const { t } = useTranslation()
 
 	return (
 		<>
-			<h1>Users</h1>
+			<h1>{t('headers.admin.users')}</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
@@ -44,9 +47,9 @@ export default function UserListScreen({ history }) {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Admin</th>
+							<th>{t('input.name.label')}</th>
+							<th>{t('input.email.label')}</th>
+							<th>{t('header.admin.title')}</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -84,5 +87,5 @@ export default function UserListScreen({ history }) {
 				</Table>
 			)}
 		</>
-	);
+	)
 }
