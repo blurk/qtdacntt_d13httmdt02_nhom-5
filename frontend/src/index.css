@@ -20,6 +20,10 @@ h2 {
 	margin: 0.1rem;
 }
 
+.mw--150 {
+	max-width: 150px;
+}
+
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,

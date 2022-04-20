@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-	Badge,
-	Container,
-	Nav,
-	Navbar,
-	NavDropdown,
-	Tooltip
-} from 'react-bootstrap'
+import { Badge, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'

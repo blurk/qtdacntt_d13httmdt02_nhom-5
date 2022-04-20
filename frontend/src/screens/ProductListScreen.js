@@ -104,6 +104,7 @@ export default function ProductListScreen({ history, match }) {
 								<th>{t('input.price.label')}</th>
 								<th>{t('input.category.label')}</th>
 								<th>{t('input.brand.label')}</th>
+								<th>{t('button.actions')}</th>
 							</tr>
 						</thead>
 						<tbody>

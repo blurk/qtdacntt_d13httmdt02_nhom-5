@@ -35,6 +35,7 @@
 		"markAsDelivered": "Mark as delivered",
 		"update": "Update",
 		"continue": "Continue",
+		"action": "Actions",
 		"edit": {
 			"product": "Edit Product"
 		},
@@ -107,6 +108,7 @@
 	"newCustomer": "New Customer",
 	"passWordNotMatch": "Password not match",
 	"haveAnAccount": "Have an account",
+	"productAlreadyReview": "You already reviewe this product",
 
 	"input": {
 		"email": {

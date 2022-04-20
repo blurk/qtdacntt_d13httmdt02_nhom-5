@@ -70,7 +70,7 @@ export default function OrderScreen({ match, history }) {
 				setSdkReady(true)
 			}
 		}
-	}, [dispatch, orderId, successPay, order, successDeliver, userInfo])
+	}, [dispatch, orderId, successPay, order, successDeliver, userInfo, history])
 
 	const successPaymentHandler = (paymentResult) => {
 		dispatch(payOrder(orderId, paymentResult))
@@ -120,7 +120,7 @@ export default function OrderScreen({ match, history }) {
 							<h2>{t('paymentMethod')}</h2>
 							<p>
 								<strong>{t('method')}: </strong>
-								{order.paymentMethod}
+								{order.paymentMethod === 'cod' ? t('cod') : t('paypal')}
 							</p>
 							{order.isPaid ? (
 								<Message variant='success'>
@@ -140,7 +140,7 @@ export default function OrderScreen({ match, history }) {
 									{order.orderItems.map((item, index) => (
 										<ListGroup.Item key={index}>
 											<Row>
-												<Col md={1}>
+												<Col md={4}>
 													<Image
 														src={item.image}
 														alt={item.name}
@@ -148,14 +148,17 @@ export default function OrderScreen({ match, history }) {
 														rounded
 													/>
 												</Col>
-												<Col>
-													<Link to={`/products/${item.product}`}>
+												<Col md={1}>
+													<Link
+														to={`/products/${item.product}`}
+														className='text-info'
+														style={{ textDecoration: 'underline' }}>
 														{item.name}
 													</Link>
 												</Col>
-												<Col md={4}>
+												<Col md={6}>
 													{item.quantity} x {formatter.format(item.price)} =
-													{formatter.format(item.quantity * item.price)}
+													&nbsp;{formatter.format(item.quantity * item.price)}
 												</Col>
 											</Row>
 										</ListGroup.Item>

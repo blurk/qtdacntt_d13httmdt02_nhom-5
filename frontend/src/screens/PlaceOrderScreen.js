@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react'
-import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap'
+import {
+	Button,
+	Card,
+	Col,
+	Image,
+	ListGroup,
+	Row,
+	Table
+} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -47,7 +55,8 @@ export default function PlaceorderScreen({ history }) {
 			createdOrder({
 				orderItems: cart.cartItems,
 				shippingAddress: cart.shippingAddress,
-				paymentMethod: cart.paymentMethod,
+				paymentMethod:
+					cart?.paymentMethod ?? JSON.parse(localStorage.getItem('payment')),
 				itemsPrice: cart.itemsPrice,
 				shippingPrice: cart.shippingPrice,
 				taxPrice: cart.taxPrice,
@@ -66,15 +75,22 @@ export default function PlaceorderScreen({ history }) {
 							<h2>{t('shipping')}</h2>
 							<p>
 								<strong>{t('address')}: </strong>
-								{cart.shippingAddress.address},{cart.shippingAddress.city},
-								{cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+								{cart.shippingAddress.address},&nbsp;{cart.shippingAddress.city}
+								,&nbsp;
+								{cart.shippingAddress.country}
+							</p>
+							<p>
+								{t('input.postalCode.label')}: {cart.shippingAddress.postalCode}
 							</p>
 						</ListGroup.Item>
 
 						<ListGroup.Item>
 							<h2>{t('paymentMethod')}</h2>
 							<strong>{t('method')}: </strong>
-							{cart.paymentMethod}
+							{(cart?.paymentMethod ??
+								JSON.parse(localStorage.getItem('payment'))) === 'cod'
+								? t('cod')
+								: t('paypal')}
 						</ListGroup.Item>
 
 						<ListGroup.Item>
@@ -86,7 +102,7 @@ export default function PlaceorderScreen({ history }) {
 									{cart.cartItems.map((item, index) => (
 										<ListGroup.Item key={index}>
 											<Row>
-												<Col md={1}>
+												<Col md={4}>
 													<Image
 														src={item.image}
 														alt={item.name}
@@ -94,14 +110,14 @@ export default function PlaceorderScreen({ history }) {
 														rounded
 													/>
 												</Col>
-												<Col>
+												<Col md={1}>
 													<Link to={`/products/${item.product}`}>
 														{item.name}
 													</Link>
 												</Col>
-												<Col md={4}>
+												<Col md={6}>
 													{item.quantity} x {formatter.format(item.price)} =
-													{formatter.format(item.quantity * item.price)}
+													&nbsp;{formatter.format(item.quantity * item.price)}
 												</Col>
 											</Row>
 										</ListGroup.Item>

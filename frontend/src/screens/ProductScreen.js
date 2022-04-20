@@ -81,7 +81,7 @@ export default function ProductScreen({ match, history }) {
 								<ListGroup.Item>
 									<Rating
 										value={+product.rating}
-										text={`${product.numReviews} ${t('review')}`}
+										text={`${product.numReviews} ${t('review.reviews')}`}
 									/>
 								</ListGroup.Item>
 								<ListGroup.Item>
@@ -166,7 +166,9 @@ export default function ProductScreen({ match, history }) {
 								<ListGroup.Item>
 									<h2>{t('review.write')}</h2>
 									{errorProductReview && (
-										<Message variant='danger'>{errorProductReview}</Message>
+										<Message variant='danger'>
+											{t('productAlreadyReview')}
+										</Message>
 									)}
 									{userInfo ? (
 										<Form onSubmit={submitHandler}>
