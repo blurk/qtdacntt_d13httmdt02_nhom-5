@@ -9,7 +9,7 @@ i18n
 	.use(initReactI18next)
 	.init({
 		debug: true,
-		fallbackLng: 'en',
+		fallbackLng: 'en-US',
 		interpolation: {
 			escapeValue: false // not needed for react as it escapes by default
 		}
@@ -18,6 +18,6 @@ i18n
 export default i18n
 
 export const languages = {
-	en: { nativeName: 'English' },
-	vi: { nativeName: 'Tiếng Việt' }
+	'en-US': { nativeName: 'English' },
+	'vi-VN': { nativeName: 'Tiếng Việt' }
 }
