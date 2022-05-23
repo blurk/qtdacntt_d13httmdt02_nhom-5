@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Card, Col, Image, ListGroup, Row, Table } from 'react-bootstrap';
+import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -143,8 +143,7 @@ export default function PlaceorderScreen({ history }) {
                   type="button"
                   className="btn-block"
                   disabled={cart.cartItems.length === 0}
-                  onClick={placeOderHandler}
-                >
+                  onClick={placeOderHandler}>
                   {t('button.placeOrder')}
                 </Button>
               </ListGroup.Item>

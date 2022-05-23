@@ -119,8 +119,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder={t('input.name.placeholder')}
                 value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setName(e.target.value)}></Form.Control>
             </Form.Group>
             <Form.Group controlId="price">
               <Form.Label>{t('input.price.label')}</Form.Label>
@@ -128,8 +127,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="number"
                 placeholder={t('input.price.placeholder')}
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setPrice(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="image">
@@ -138,14 +136,12 @@ export default function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder={t('input.image.placeholder')}
                 value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setImage(e.target.value)}></Form.Control>
               <Form.File
                 id="image-file"
                 label={t('input.image.choose')}
                 custom
-                onChange={uploadFileHandler}
-              ></Form.File>
+                onChange={uploadFileHandler}></Form.File>
               {uploading && <Loader />}
             </Form.Group>
 
@@ -155,8 +151,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder={t('input.brand.placeholder')}
                 value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setBrand(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="countInStock">
@@ -165,8 +160,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="number"
                 placeholder={t('input.cis.placeholder')}
                 value={countInStock}
-                onChange={(e) => setCountInStock(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setCountInStock(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="category">
@@ -175,8 +169,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder={t('input.category.placeholder')}
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setCategory(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="description">
@@ -185,8 +178,7 @@ export default function ProductEditScreen({ match, history }) {
                 type="text"
                 placeholder={t('input.description.placeholder')}
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></Form.Control>
+                onChange={(e) => setDescription(e.target.value)}></Form.Control>
             </Form.Group>
             <Button type="submit" variant="primary">
               {t('button.update')}

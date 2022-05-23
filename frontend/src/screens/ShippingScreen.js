@@ -37,8 +37,7 @@ const ShippingScreen = ({ history }) => {
             placeholder={t('input.address.placeholder')}
             value={address}
             required
-            onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setAddress(e.target.value)}></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="city">
@@ -48,8 +47,7 @@ const ShippingScreen = ({ history }) => {
             placeholder={t('input.city.placeholder')}
             value={city}
             required
-            onChange={(e) => setCity(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setCity(e.target.value)}></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="postalCode">
@@ -59,8 +57,7 @@ const ShippingScreen = ({ history }) => {
             placeholder={t('input.postalCode.placeholder')}
             value={postalCode}
             required
-            onChange={(e) => setPostalCode(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setPostalCode(e.target.value)}></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="country">
@@ -70,8 +67,7 @@ const ShippingScreen = ({ history }) => {
             placeholder={t('input.country.placeholder')}
             value={country}
             required
-            onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setCountry(e.target.value)}></Form.Control>
         </Form.Group>
 
         <Button type="submit" variant="primary">

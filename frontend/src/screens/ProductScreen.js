@@ -114,8 +114,7 @@ export default function ProductScreen({ match, history }) {
                           <Form.Control
                             as="select"
                             value={quantity}
-                            onChange={(e) => setQuantity(e.target.value)}
-                          >
+                            onChange={(e) => setQuantity(e.target.value)}>
                             {[...Array(product.countInStock).keys()].map((k) => (
                               <option key={k + 1} value={k + 1}>
                                 {k + 1}
@@ -131,8 +130,7 @@ export default function ProductScreen({ match, history }) {
                       onClick={addToCartHandler}
                       className="btn-block"
                       type="button"
-                      disabled={!product.countInStock}
-                    >
+                      disabled={!product.countInStock}>
                       {t('button.addToCart')}
                     </Button>
                   </ListGroup.Item>
@@ -166,8 +164,7 @@ export default function ProductScreen({ match, history }) {
                           required
                           as="select"
                           value={rating}
-                          onChange={(e) => setRating(e.target.value)}
-                        >
+                          onChange={(e) => setRating(e.target.value)}>
                           <option value="">{t('review.select.label')}</option>
                           <option value="1">1 - {t('review.select.1')}</option>
                           <option value="2">2 - {t('review.select.2')}</option>
@@ -183,8 +180,7 @@ export default function ProductScreen({ match, history }) {
                           as="textarea"
                           row="3"
                           value={comment}
-                          onChange={(e) => setComment(e.target.value)}
-                        ></Form.Control>
+                          onChange={(e) => setComment(e.target.value)}></Form.Control>
                       </Form.Group>
                       <Button type="submit" variant="primary">
                         {t('button.submit')}

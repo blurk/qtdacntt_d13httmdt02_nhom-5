@@ -56,8 +56,7 @@ export default function CartScreen({ match, location, history }) {
                     <Form.Control
                       as="select"
                       value={item.quantity}
-                      onChange={(e) => dispatch(addToCart(item.product, +e.target.value))}
-                    >
+                      onChange={(e) => dispatch(addToCart(item.product, +e.target.value))}>
                       {[...Array(item.countInStock).keys()].map((k) => (
                         <option key={k + 1} value={k + 1}>
                           {k + 1}
@@ -69,8 +68,7 @@ export default function CartScreen({ match, location, history }) {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item.product)}
-                    >
+                      onClick={() => removeFromCartHandler(item.product)}>
                       <i className="fas fa-trash"></i>
                     </Button>
                   </Col>
@@ -97,8 +95,7 @@ export default function CartScreen({ match, location, history }) {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length < 1}
-                onClick={checkoutHandler}
-              >
+                onClick={checkoutHandler}>
                 {t('button.proceedToCheckout')}
               </Button>
             </ListGroup.Item>

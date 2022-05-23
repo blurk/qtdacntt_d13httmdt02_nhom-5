@@ -17,8 +17,7 @@ const LanguageSwitcher = () => {
           <NavDropdown.Item
             active={i18n.language === language}
             key={language}
-            onClick={() => changeLanguage(language)}
-          >
+            onClick={() => changeLanguage(language)}>
             {languages[language].nativeName}
           </NavDropdown.Item>
         );

@@ -46,8 +46,7 @@ export default function LoginScreen({ location, history }) {
             type="email"
             placeholder={t('input.email.placeholder')}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setEmail(e.target.value)}></Form.Control>
         </Form.Group>
         {/* PASSWORD */}
         <Form.Group controlId="password">
@@ -56,8 +55,7 @@ export default function LoginScreen({ location, history }) {
             type="password"
             placeholder={t('input.password.placeholder')}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
+            onChange={(e) => setPassword(e.target.value)}></Form.Control>
         </Form.Group>
 
         <Button type="submit" variant="primary">

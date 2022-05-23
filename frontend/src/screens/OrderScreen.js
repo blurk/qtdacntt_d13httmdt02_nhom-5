@@ -137,8 +137,7 @@ export default function OrderScreen({ match, history }) {
                           <Link
                             to={`/products/${item.product}`}
                             className="text-info"
-                            style={{ textDecoration: 'underline' }}
-                          >
+                            style={{ textDecoration: 'underline' }}>
                             {item.name}
                           </Link>
                         </Col>

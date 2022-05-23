@@ -10,7 +10,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { formatDate } from '../utils';
 
-export default function ProfileScreen({ location, history }) {
+export default function ProfileScreen({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -70,8 +70,7 @@ export default function ProfileScreen({ location, history }) {
               type="email"
               placeholder={t('input.email.placeholder')}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
+              onChange={(e) => setEmail(e.target.value)}></Form.Control>
           </Form.Group>
           {/*NAME*/}
           <Form.Group controlId="name">
@@ -80,8 +79,7 @@ export default function ProfileScreen({ location, history }) {
               type="name"
               placeholder={t('input.name.placeholder')}
               value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
+              onChange={(e) => setName(e.target.value)}></Form.Control>
           </Form.Group>
           {/* PASSWORD */}
           <Form.Group controlId="password">
@@ -90,8 +88,7 @@ export default function ProfileScreen({ location, history }) {
               type="password"
               placeholder={t('input.password.placeholder')}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
+              onChange={(e) => setPassword(e.target.value)}></Form.Control>
           </Form.Group>
           {/* CONFIRM PASSWORD */}
           <Form.Group controlId="confirmPassword">
@@ -100,8 +97,7 @@ export default function ProfileScreen({ location, history }) {
               type="password"
               placeholder={t('input.confirmPassword.placeholder')}
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
+              onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
           </Form.Group>
 
           <Button type="submit" variant="primary">

@@ -77,8 +77,7 @@ export default function UserListScreen({ history }) {
                   <Button
                     variant="danger"
                     className="btn-sm"
-                    onClick={() => deleteHandler(user._id)}
-                  >
+                    onClick={() => deleteHandler(user._id)}>
                     <i className="fas fa-trash"></i>
                   </Button>
                 </td>

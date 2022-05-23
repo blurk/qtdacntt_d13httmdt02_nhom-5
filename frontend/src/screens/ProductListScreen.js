@@ -110,8 +110,7 @@ export default function ProductListScreen({ history, match }) {
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() => deleteHandler(product._id)}
-                    >
+                      onClick={() => deleteHandler(product._id)}>
                       <i className="fas fa-trash"></i>
                     </Button>
                   </td>

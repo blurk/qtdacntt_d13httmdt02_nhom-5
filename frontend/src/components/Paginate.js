@@ -15,8 +15,7 @@ export default function Paginate({ page, pages, keyword = '', isAdmin = false })
                   ? `/search/${keyword}/page/${p + 1}`
                   : `/page/${p + 1}`
                 : `/admin/productList/${p + 1}`
-            }
-          >
+            }>
             <Pagination.Item active={p + 1 === page}>{p + 1}</Pagination.Item>
           </LinkContainer>
         ))}
