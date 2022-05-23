@@ -1,173 +1,173 @@
 {
-	"header": {
-		"searchBox": {
-			"button": "Tìm kiếm",
-			"placeholder": "Nhập tên sản phẩm cần tìm..."
-		},
-		"admin": {
-			"title": "Quản lý",
-			"users": "Người dùng",
-			"products": "Sản phẩm",
-			"orders": "Đơn hàng"
-		}
-	},
-	"admin": {
-		"list": {
-			"user": "Người dùng",
-			"date": "thời điểm",
-			"totalPrice": "Tổng giá",
-			"paid": "Thanh toán lúc",
-			"delivered": "Giao hàng lúc"
-		}
-	},
+  "header": {
+    "searchBox": {
+      "button": "Tìm kiếm",
+      "placeholder": "Nhập tên sản phẩm cần tìm..."
+    },
+    "admin": {
+      "title": "Quản lý",
+      "users": "Người dùng",
+      "products": "Sản phẩm",
+      "orders": "Đơn hàng"
+    }
+  },
+  "admin": {
+    "list": {
+      "user": "Người dùng",
+      "date": "thời điểm",
+      "totalPrice": "Tổng giá",
+      "paid": "Thanh toán lúc",
+      "delivered": "Giao hàng lúc"
+    }
+  },
 
-	"button": {
-		"logOut": "Đăng xuất",
-		"register": "Đăng ký",
-		"signIn": "Đăng nhập",
-		"signUp": "Đăng ký",
-		"submit": "Gửi bình luận",
-		"placeOrder": "Đặt hàng",
-		"goBack": "Quay lại",
-		"addToCart": "thêm vào giỏ hàng",
-		"proceedToCheckout": "Tiếp tục tới thanh toán",
-		"details": "chi tiết",
-		"markAsDelivered": "Đánh dấu đã giao hàng",
-		"update": "Cập nhật",
-		"continue": "Tiếp tục",
-		"action": "Thao tác",
-		"edit": {
-			"product": "Chỉnh sửa sản phẩm"
-		},
-		"create": {
-			"product": "Tạo sản phẩm"
-		}
-	},
-	"cart": "Giỏ hàng",
-	"profile": "Hồ sơ",
-	"copyright": "Bản quyền thuộc",
-	"shipping": "Shipping",
-	"payment": "Thanh toán",
-	"price": "Đơn giá",
-	"description": "Mô tả",
-	"status": "Trạng thái",
-	"quantity": "Số lượng",
-	"shoppingCart": "Giỏ hàng",
-	"cartEmpty": "Giỏ hàng đang trống",
-	"subTotal": "Tổng",
-	"items": "sản phẩm",
-	"order": "đặt hàng",
-	"deliveredOn": "Giao vào",
-	"notDelivered": "Chưa được giao",
-	"paymentMethod": "Hình thức thanh toán",
-	"method": "Hình thức",
-	"paidOn": "Thanh toán vào",
-	"notPaid": "Chưa thanh toán",
-	"orderItems": "Sản phẩm đã đặt",
-	"orderItemsEmpty": "Đơn hàng trống",
-	"orderSummary": "Thông tin đơn hàng",
-	"tax": "Thuế",
-	"total": "Tổng",
-	"cod": "Thanh toán khi nhận hàng",
-	"address": "Địa chỉ",
-	"paypal": "Thẻ Paypal hoặc thẻ tín dụng",
-	"selectMethod": "Chọn hình thức",
-	"continue": "Tiếp tục",
-	"userProfile": "Hồ sơ người dùng",
-	"profileUpdated": "Cập nhật thành công",
-	"myOrders": "Đơn hàng của bạn",
-	"date": "Thời điểm",
+  "button": {
+    "logOut": "Đăng xuất",
+    "register": "Đăng ký",
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "submit": "Gửi bình luận",
+    "placeOrder": "Đặt hàng",
+    "goBack": "Quay lại",
+    "addToCart": "thêm vào giỏ hàng",
+    "proceedToCheckout": "Tiếp tục tới thanh toán",
+    "details": "chi tiết",
+    "markAsDelivered": "Đánh dấu đã giao hàng",
+    "update": "Cập nhật",
+    "continue": "Tiếp tục",
+    "action": "Thao tác",
+    "edit": {
+      "product": "Chỉnh sửa sản phẩm"
+    },
+    "create": {
+      "product": "Tạo sản phẩm"
+    }
+  },
+  "cart": "Giỏ hàng",
+  "profile": "Hồ sơ",
+  "copyright": "Bản quyền thuộc",
+  "shipping": "Shipping",
+  "payment": "Thanh toán",
+  "price": "Đơn giá",
+  "description": "Mô tả",
+  "status": "Trạng thái",
+  "quantity": "Số lượng",
+  "shoppingCart": "Giỏ hàng",
+  "cartEmpty": "Giỏ hàng đang trống",
+  "subTotal": "Tổng",
+  "items": "sản phẩm",
+  "order": "đặt hàng",
+  "deliveredOn": "Giao vào",
+  "notDelivered": "Chưa được giao",
+  "paymentMethod": "Hình thức thanh toán",
+  "method": "Hình thức",
+  "paidOn": "Thanh toán vào",
+  "notPaid": "Chưa thanh toán",
+  "orderItems": "Sản phẩm đã đặt",
+  "orderItemsEmpty": "Đơn hàng trống",
+  "orderSummary": "Thông tin đơn hàng",
+  "tax": "Thuế",
+  "total": "Tổng",
+  "cod": "Thanh toán khi nhận hàng",
+  "address": "Địa chỉ",
+  "paypal": "Thẻ Paypal hoặc thẻ tín dụng",
+  "selectMethod": "Chọn hình thức",
+  "continue": "Tiếp tục",
+  "userProfile": "Hồ sơ người dùng",
+  "profileUpdated": "Cập nhật thành công",
+  "myOrders": "Đơn hàng của bạn",
+  "date": "Thời điểm",
 
-	"stock": {
-		"in": "Còn hàng",
-		"out": "Hết hàng"
-	},
+  "stock": {
+    "in": "Còn hàng",
+    "out": "Hết hàng"
+  },
 
-	"review": {
-		"reviews": "đánh giá",
-		"write": "viết đánh giá của bạn",
-		"rating": "Cảm nhận của bạn về sản phẩm này",
-		"comment": "Bình luận",
-		"no": "Chưa có đánh giá",
-		"select": {
-			"label": "Lựa chọn...",
-			"1": "Nghèo nàn",
-			"2": "Ổn",
-			"3": "Tốt",
-			"4": "Rất tốt",
-			"5": "Tuyệt vời"
-		},
-		"message": {
-			"p1": "Hãy",
-			"p2": "để viết đánh giá"
-		}
-	},
+  "review": {
+    "reviews": "đánh giá",
+    "write": "viết đánh giá của bạn",
+    "rating": "Cảm nhận của bạn về sản phẩm này",
+    "comment": "Bình luận",
+    "no": "Chưa có đánh giá",
+    "select": {
+      "label": "Lựa chọn...",
+      "1": "Nghèo nàn",
+      "2": "Ổn",
+      "3": "Tốt",
+      "4": "Rất tốt",
+      "5": "Tuyệt vời"
+    },
+    "message": {
+      "p1": "Hãy",
+      "p2": "để viết đánh giá"
+    }
+  },
 
-	"error": "Đã có gì đó xảy ra. Hãy tải lại trang.",
-	"latestProducts": "Sản phẩm mới nhất",
-	"newCustomer": "Khách hàng mới",
-	"passWordNotMatch": "Mật khẩu không khớp",
-	"haveAnAccount": "Đã có tài khoản",
-	"productAlreadyReview": "Bạn đã đánh giá sản phẩm này.",
+  "error": "Đã có gì đó xảy ra. Hãy tải lại trang.",
+  "latestProducts": "Sản phẩm mới nhất",
+  "newCustomer": "Khách hàng mới",
+  "passWordNotMatch": "Mật khẩu không khớp",
+  "haveAnAccount": "Đã có tài khoản",
+  "productAlreadyReview": "Bạn đã đánh giá sản phẩm này.",
 
-	"input": {
-		"email": {
-			"label": "Địa chỉ Email",
-			"placeholder": "abc@gmail.com"
-		},
-		"name": {
-			"label": "Họ và tên",
-			"placeholder": "Nguyễn Văn A"
-		},
-		"password": {
-			"label": "Mật khẩu",
-			"placeholder": "Nhập mật khẩu của bạn"
-		},
-		"confirmPassword": {
-			"label": "Xác nhận mật khẩu",
-			"placeholder": "Nhập lại mật khẩu của bạn"
-		},
-		"city": {
-			"label": "Thành phố",
-			"placeholder": "Hà Nội, Đà Nẵng, New York..."
-		},
-		"postalCode": {
-			"label": "Mã bưu điện",
-			"placeholder": "Nhập mã bưu điện có từ 4 tới 6 chữ số"
-		},
-		"address": {
-			"label": "Địa chỉ",
-			"placeholder": "Số nhà, Ngách/Ngõ , Phường/Xã, Quận/Huyện..."
-		},
-		"country": {
-			"label": "Quốc gia",
-			"placeholder": "Anh, Pháp, Mỹ..."
-		},
-		"price": {
-			"label": "Đơn giá",
-			"placeholder": "Nhập đơn giá cho 1 sản phẩm"
-		},
-		"image": {
-			"label": "HÌnh ảnh",
-			"placeholder": "Đường dẫn tới ảnh",
-			"choose": "Chọn ảnh để tải lên"
-		},
-		"brand": {
-			"label": "Thương hiệu",
-			"placeholder": "Nhập tên thương hiệu"
-		},
-		"cis": {
-			"label": "Số lượng",
-			"placeholder": "Nhập số lượng"
-		},
-		"category": {
-			"label": "Danh mục",
-			"placeholder": "Nhập danh mục"
-		},
-		"description": {
-			"label": "Mô tả",
-			"placeholder": "Nhập mô tả cho sản phẩm"
-		},
-		"isAdmin": "Là Quản trị viên (Admin)"
-	}
+  "input": {
+    "email": {
+      "label": "Địa chỉ Email",
+      "placeholder": "abc@gmail.com"
+    },
+    "name": {
+      "label": "Họ và tên",
+      "placeholder": "Nguyễn Văn A"
+    },
+    "password": {
+      "label": "Mật khẩu",
+      "placeholder": "Nhập mật khẩu của bạn"
+    },
+    "confirmPassword": {
+      "label": "Xác nhận mật khẩu",
+      "placeholder": "Nhập lại mật khẩu của bạn"
+    },
+    "city": {
+      "label": "Thành phố",
+      "placeholder": "Hà Nội, Đà Nẵng, New York..."
+    },
+    "postalCode": {
+      "label": "Mã bưu điện",
+      "placeholder": "Nhập mã bưu điện có từ 4 tới 6 chữ số"
+    },
+    "address": {
+      "label": "Địa chỉ",
+      "placeholder": "Số nhà, Ngách/Ngõ , Phường/Xã, Quận/Huyện..."
+    },
+    "country": {
+      "label": "Quốc gia",
+      "placeholder": "Anh, Pháp, Mỹ..."
+    },
+    "price": {
+      "label": "Đơn giá",
+      "placeholder": "Nhập đơn giá cho 1 sản phẩm"
+    },
+    "image": {
+      "label": "HÌnh ảnh",
+      "placeholder": "Đường dẫn tới ảnh",
+      "choose": "Chọn ảnh để tải lên"
+    },
+    "brand": {
+      "label": "Thương hiệu",
+      "placeholder": "Nhập tên thương hiệu"
+    },
+    "cis": {
+      "label": "Số lượng",
+      "placeholder": "Nhập số lượng"
+    },
+    "category": {
+      "label": "Danh mục",
+      "placeholder": "Nhập danh mục"
+    },
+    "description": {
+      "label": "Mô tả",
+      "placeholder": "Nhập mô tả cho sản phẩm"
+    },
+    "isAdmin": "Là Quản trị viên (Admin)"
+  }
 }

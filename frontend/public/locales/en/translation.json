@@ -1,173 +1,173 @@
 {
-	"header": {
-		"searchBox": {
-			"button": "Search",
-			"placeholder": "Search products..."
-		},
-		"admin": {
-			"title": "Admin",
-			"users": "Users",
-			"products": "Products",
-			"orders": "Orders"
-		}
-	},
-	"admin": {
-		"list": {
-			"user": "user",
-			"date": "date",
-			"totalPrice": "total price",
-			"paid": "paid",
-			"delivered": "delivered"
-		}
-	},
+  "header": {
+    "searchBox": {
+      "button": "Search",
+      "placeholder": "Search products..."
+    },
+    "admin": {
+      "title": "Admin",
+      "users": "Users",
+      "products": "Products",
+      "orders": "Orders"
+    }
+  },
+  "admin": {
+    "list": {
+      "user": "user",
+      "date": "date",
+      "totalPrice": "total price",
+      "paid": "paid",
+      "delivered": "delivered"
+    }
+  },
 
-	"button": {
-		"logOut": "Log Out",
-		"register": "Register",
-		"signIn": "Sign In",
-		"signUp": "Sign Up",
-		"submit": "submit",
-		"placeOrder": "Place Order",
-		"goBack": "Go Back",
-		"addToCart": "add to cart",
-		"proceedToCheckout": "Proceed To Checkout",
-		"details": "details",
-		"markAsDelivered": "Mark as delivered",
-		"update": "Update",
-		"continue": "Continue",
-		"action": "Actions",
-		"edit": {
-			"product": "Edit Product"
-		},
-		"create": {
-			"product": "Create Product"
-		}
-	},
-	"cart": "Cart",
-	"profile": "Profile",
-	"copyright": "Copyright",
-	"shipping": "Shipping",
-	"payment": "Payment",
-	"price": "Price",
-	"description": "Description",
-	"status": "Status",
-	"quantity": "Quantity",
-	"shoppingCart": "Shopping Cart",
-	"cartEmpty": "Your cart is empty",
-	"subTotal": "Subtotal",
-	"items": "items",
-	"order": "order",
-	"deliveredOn": "Delivered on",
-	"notDelivered": "Not delivered",
-	"paymentMethod": "Payment Method",
-	"method": "Method",
-	"paidOn": "Paid on",
-	"notPaid": "Not paid",
-	"orderItems": "Order items",
-	"orderItemsEmpty": "Order is empty",
-	"orderSummary": "Order Summary",
-	"tax": "Tax",
-	"total": "Total",
-	"cod": "CASH ON DELIVERY",
-	"address": "Address",
-	"paypal": "Paypal or Credit Card",
-	"selectMethod": "Select Method",
-	"continue": "Continue",
-	"userProfile": "User Profile",
-	"profileUpdated": "Profile Updated",
-	"myOrders": "My Orders",
-	"date": "date",
+  "button": {
+    "logOut": "Log Out",
+    "register": "Register",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "submit": "submit",
+    "placeOrder": "Place Order",
+    "goBack": "Go Back",
+    "addToCart": "add to cart",
+    "proceedToCheckout": "Proceed To Checkout",
+    "details": "details",
+    "markAsDelivered": "Mark as delivered",
+    "update": "Update",
+    "continue": "Continue",
+    "action": "Actions",
+    "edit": {
+      "product": "Edit Product"
+    },
+    "create": {
+      "product": "Create Product"
+    }
+  },
+  "cart": "Cart",
+  "profile": "Profile",
+  "copyright": "Copyright",
+  "shipping": "Shipping",
+  "payment": "Payment",
+  "price": "Price",
+  "description": "Description",
+  "status": "Status",
+  "quantity": "Quantity",
+  "shoppingCart": "Shopping Cart",
+  "cartEmpty": "Your cart is empty",
+  "subTotal": "Subtotal",
+  "items": "items",
+  "order": "order",
+  "deliveredOn": "Delivered on",
+  "notDelivered": "Not delivered",
+  "paymentMethod": "Payment Method",
+  "method": "Method",
+  "paidOn": "Paid on",
+  "notPaid": "Not paid",
+  "orderItems": "Order items",
+  "orderItemsEmpty": "Order is empty",
+  "orderSummary": "Order Summary",
+  "tax": "Tax",
+  "total": "Total",
+  "cod": "CASH ON DELIVERY",
+  "address": "Address",
+  "paypal": "Paypal or Credit Card",
+  "selectMethod": "Select Method",
+  "continue": "Continue",
+  "userProfile": "User Profile",
+  "profileUpdated": "Profile Updated",
+  "myOrders": "My Orders",
+  "date": "date",
 
-	"stock": {
-		"in": "In stock",
-		"out": "Out of stock"
-	},
+  "stock": {
+    "in": "In stock",
+    "out": "Out of stock"
+  },
 
-	"review": {
-		"reviews": "reviews",
-		"write": "write a customer review",
-		"rating": "Rating",
-		"comment": "Comment",
-		"no": "No Reviews",
-		"select": {
-			"label": "Select...",
-			"1": "Poor",
-			"2": "Fair",
-			"3": "Good",
-			"4": "Very Good",
-			"5": "Excellent"
-		},
-		"message": {
-			"p1": "Please",
-			"p2": "to write a review"
-		}
-	},
+  "review": {
+    "reviews": "reviews",
+    "write": "write a customer review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "no": "No Reviews",
+    "select": {
+      "label": "Select...",
+      "1": "Poor",
+      "2": "Fair",
+      "3": "Good",
+      "4": "Very Good",
+      "5": "Excellent"
+    },
+    "message": {
+      "p1": "Please",
+      "p2": "to write a review"
+    }
+  },
 
-	"error": "Something went wrong. Please try to refresh",
-	"latestProducts": "Lastest Products",
-	"newCustomer": "New Customer",
-	"passWordNotMatch": "Password not match",
-	"haveAnAccount": "Have an account",
-	"productAlreadyReview": "You already reviewe this product",
+  "error": "Something went wrong. Please try to refresh",
+  "latestProducts": "Lastest Products",
+  "newCustomer": "New Customer",
+  "passWordNotMatch": "Password not match",
+  "haveAnAccount": "Have an account",
+  "productAlreadyReview": "You already reviewe this product",
 
-	"input": {
-		"email": {
-			"label": "Email Address",
-			"placeholder": "Enter Email"
-		},
-		"name": {
-			"label": "Name",
-			"placeholder": "Enter Name"
-		},
-		"password": {
-			"label": "Password",
-			"placeholder": "Enter Password"
-		},
-		"confirmPassword": {
-			"label": "Confirm Password",
-			"placeholder": "Enter Password again"
-		},
-		"city": {
-			"label": "City",
-			"placeholder": "Enter City"
-		},
-		"postalCode": {
-			"label": "Postal Code",
-			"placeholder": "Enter postal code"
-		},
-		"address": {
-			"label": "Address",
-			"placeholder": "Enter Address"
-		},
-		"country": {
-			"label": "Country",
-			"placeholder": "Enter country name"
-		},
-		"price": {
-			"label": "Price",
-			"placeholder": "Enter Price"
-		},
-		"image": {
-			"label": "Image",
-			"placeholder": "Enter image url",
-			"choose": "Choose image"
-		},
-		"brand": {
-			"label": "Brand",
-			"placeholder": "Enter brand"
-		},
-		"cis": {
-			"label": "Count In Stock",
-			"placeholder": "Enter amount"
-		},
-		"category": {
-			"label": "Category",
-			"placeholder": "Enter category"
-		},
-		"description": {
-			"label": "Description",
-			"placeholder": "Enter description"
-		},
-		"isAdmin": "Is Admin"
-	}
+  "input": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter Email"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter Name"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter Password"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Enter Password again"
+    },
+    "city": {
+      "label": "City",
+      "placeholder": "Enter City"
+    },
+    "postalCode": {
+      "label": "Postal Code",
+      "placeholder": "Enter postal code"
+    },
+    "address": {
+      "label": "Address",
+      "placeholder": "Enter Address"
+    },
+    "country": {
+      "label": "Country",
+      "placeholder": "Enter country name"
+    },
+    "price": {
+      "label": "Price",
+      "placeholder": "Enter Price"
+    },
+    "image": {
+      "label": "Image",
+      "placeholder": "Enter image url",
+      "choose": "Choose image"
+    },
+    "brand": {
+      "label": "Brand",
+      "placeholder": "Enter brand"
+    },
+    "cis": {
+      "label": "Count In Stock",
+      "placeholder": "Enter amount"
+    },
+    "category": {
+      "label": "Category",
+      "placeholder": "Enter category"
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Enter description"
+    },
+    "isAdmin": "Is Admin"
+  }
 }
