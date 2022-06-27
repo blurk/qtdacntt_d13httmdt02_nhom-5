@@ -37,7 +37,7 @@ export default function UserListScreen({ history }) {
 
 	return (
 		<>
-			<h1>{t('headers.admin.users')}</h1>
+			<h1>{t('header.admin.users')}</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (

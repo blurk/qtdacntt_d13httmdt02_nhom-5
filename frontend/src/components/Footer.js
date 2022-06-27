@@ -10,7 +10,7 @@ export default function Footer() {
 			<Container>
 				<Row>
 					<Col className='text-center py-3'>
-						{t('copyright')} &copy; Proshop
+						{t('copyright')} &copy; {process.env.REACT_APP_SHOP_NAME}
 					</Col>
 				</Row>
 			</Container>

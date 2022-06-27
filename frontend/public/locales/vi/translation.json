@@ -46,7 +46,7 @@
 	"cart": "Giỏ hàng",
 	"profile": "Hồ sơ",
 	"copyright": "Bản quyền thuộc",
-	"shipping": "Shipping",
+	"shipping": "Thông tin thanh toán",
 	"payment": "Thanh toán",
 	"price": "Đơn giá",
 	"description": "Mô tả",
@@ -116,8 +116,8 @@
 			"placeholder": "abc@gmail.com"
 		},
 		"name": {
-			"label": "Họ và tên",
-			"placeholder": "Nguyễn Văn A"
+			"label": "Tên",
+			"placeholder": "Nhập tên"
 		},
 		"password": {
 			"label": "Mật khẩu",
