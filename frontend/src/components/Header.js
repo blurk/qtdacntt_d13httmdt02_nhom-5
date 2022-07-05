@@ -27,7 +27,7 @@ export default function Header() {
 			<Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
 				<Container>
 					<LinkContainer to='/'>
-						<Navbar.Brand>{process.env.REACT_APP_SHOP_NAME}</Navbar.Brand>
+						<Navbar.Brand>bon</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>

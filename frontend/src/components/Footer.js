@@ -9,9 +9,7 @@ export default function Footer() {
 		<footer>
 			<Container>
 				<Row>
-					<Col className='text-center py-3'>
-						{t('copyright')} &copy; {process.env.REACT_APP_SHOP_NAME}
-					</Col>
+					<Col className='text-center py-3'>{t('copyright')} &copy; bon</Col>
 				</Row>
 			</Container>
 		</footer>

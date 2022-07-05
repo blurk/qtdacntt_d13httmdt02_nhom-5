@@ -12,7 +12,7 @@ export default function Meta({ title, description, keywords }) {
 }
 
 Meta.defaultProps = {
-	title: `Welcome to ${process.env.REACT_APP_SHOP_NAME}`,
+	title: `Welcome to bon`,
 	description: 'Chung toi ban template',
 	keywords: 'template, website, free template'
 }
