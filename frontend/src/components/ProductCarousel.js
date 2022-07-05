@@ -26,7 +26,7 @@ export default function ProductCarousel() {
 	) : error ? (
 		<Message variant='danger'>{t('error')}</Message>
 	) : (
-		<Carousel pause='hover' className='bg-dark'>
+		<Carousel pause='hover' className='bg-primary'>
 			{products.map((p) => (
 				<Carousel.Item key={p._id}>
 					<Link to={`/product/${p._id}`}>

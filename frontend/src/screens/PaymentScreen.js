@@ -42,14 +42,14 @@ export default function PaymentScreen({ history }) {
 						checked
 						onChange={(e) => setPaymentMethod(e.target.value)}
 					/>
-					<Form.Check
+					{/* <Form.Check
 						type='radio'
 						label={t('cod')}
 						id='cod'
 						name='paymentMethod'
 						value='cod'
 						onChange={(e) => setPaymentMethod(e.target.value)}
-					/>
+					/> */}
 				</Col>
 			</Form.Group>
 			<Form onSubmit={submitHandler}>
