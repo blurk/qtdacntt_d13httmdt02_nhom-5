@@ -11,8 +11,9 @@ const LanguageSwitcher = () => {
 	}
 
 	return (
-		<NavDropdown title={languages[i18n.language].nativeName}>
-			{Object.keys(languages).map((language) => {
+		<NavDropdown
+			title={languages[i18n.language === 'vi' ? 'vi-VN' : 'en-US']?.nativeName}>
+			{Object.keys(languages)?.map((language) => {
 				return (
 					<NavDropdown.Item
 						active={i18n.language === language}
