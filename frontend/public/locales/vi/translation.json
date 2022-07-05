@@ -169,5 +169,7 @@
 			"placeholder": "Nhập mô tả cho sản phẩm"
 		},
 		"isAdmin": "Là Quản trị viên (Admin)"
-	}
+	},
+	"emailCustomer": "Nhập email của chủ đơn hàng này",
+	"templateLink": "Nhập đường dẫn tải template"
 }

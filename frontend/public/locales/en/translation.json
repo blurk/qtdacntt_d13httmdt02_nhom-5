@@ -169,5 +169,7 @@
 			"placeholder": "Enter description"
 		},
 		"isAdmin": "Is Admin"
-	}
+	},
+	"emailCustomer": "Enter customer email",
+	"templateLink": "Link to the template"
 }

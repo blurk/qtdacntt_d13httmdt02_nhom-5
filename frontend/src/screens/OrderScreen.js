@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap'
+import { Button, Card, Col, Form, Image, ListGroup, Row } from 'react-bootstrap'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import emailjs from '@emailjs/browser'
 
 import {
 	deliverOrder,
@@ -19,6 +20,7 @@ import {
 	ORDER_PAY_RESET
 } from '../constants/orderConstants'
 import { formatDate, formatter } from '../utils'
+import { useRef } from 'react'
 
 export default function OrderScreen({ match, history }) {
 	const orderId = match.params.id
@@ -76,8 +78,24 @@ export default function OrderScreen({ match, history }) {
 		dispatch(payOrder(orderId, paymentResult))
 	}
 
-	const deliverHandler = () => {
-		dispatch(deliverOrder(order))
+	const ref = useRef(null)
+
+	const deliverHandler = (e) => {
+		e.preventDefault()
+
+		emailjs
+			.sendForm(
+				'service_iektkj4',
+				'template_v5yjmdz',
+				ref.current,
+				'user_ePY8mJF51VXT3OrkOwMlx'
+			)
+			.then(
+				(result) => {
+					dispatch(deliverOrder(order))
+				},
+				(error) => {}
+			)
 	}
 
 	return loading ? (
@@ -219,14 +237,48 @@ export default function OrderScreen({ match, history }) {
 								userInfo.isAdmin &&
 								order.isPaid &&
 								!order.isDelivered && (
-									<ListGroup.Item>
-										<Button
-											type='button'
-											className='btn btn-block'
-											onClick={deliverHandler}>
-											{t('button.markAsDelivered')}
-										</Button>
-									</ListGroup.Item>
+									<>
+										<hr />
+										<ListGroup.Item>
+											<Form ref={ref} onSubmit={deliverHandler}>
+												<Form.Group className='mb-3' controlId='formBasicEmail'>
+													<Form.Label>{t('emailCustomer')}</Form.Label>
+													<Form.Control
+														type='email'
+														placeholder={t('input.email.placeholder')}
+														name='to_email'
+														className='mb-2 bg-primary text-light'
+														required
+													/>
+													<Form.Label className='mt-2'>
+														{t('templateLink')}
+													</Form.Label>
+													<Form.Control
+														type='text'
+														name='message'
+														className='mb-2 bg-primary text-light'
+														placeholder='https://example.com'
+														required
+													/>
+													<Form.Label className='mt-2'>
+														{t('input.name.label')}
+													</Form.Label>
+													<Form.Control
+														type='text'
+														name='to_name'
+														className='mb-2 bg-primary text-light'
+														value={order.user.name}
+														readOnly
+													/>
+													<Button
+														type='submit'
+														className='btn btn-block mt-2 btn-success'>
+														{t('button.markAsDelivered')}
+													</Button>
+												</Form.Group>
+											</Form>
+										</ListGroup.Item>
+									</>
 								)}
 						</ListGroup>
 					</Card>
