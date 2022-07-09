@@ -1,34 +1,34 @@
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Route } from 'react-router-dom';
-import { logout } from '../actions/userActions';
-import SearchBox from './SearchBox';
+import React from 'react'
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Route } from 'react-router-dom'
+import { logout } from '../actions/userActions'
+import SearchBox from './SearchBox'
 
 function getCartItemsCount() {
-	const cartItems = localStorage.getItem('cartItems') ?? JSON.stringify([]);
-	return JSON.parse(cartItems).length;
-};
+	const cartItems = localStorage.getItem('cartItems') ?? JSON.stringify([])
+	return JSON.parse(cartItems).length
+}
 
 export default function Header() {
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
-	const userLogin = useSelector((state) => state.userLogin);
-	const { userInfo } = userLogin;
+	const userLogin = useSelector((state) => state.userLogin)
+	const { userInfo } = userLogin
 
 	const logoutHandler = () => {
-		dispatch(logout());
-	};
+		dispatch(logout())
+	}
 
-	const cartItemsCount = getCartItemsCount();
+	const cartItemsCount = getCartItemsCount()
 
 	return (
 		<header>
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
 				<Container>
 					<LinkContainer to='/'>
-						<Navbar.Brand>Proshop</Navbar.Brand>
+						<Navbar.Brand>Tiệm nước hoa 102</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
@@ -36,7 +36,8 @@ export default function Header() {
 						<Nav className='ml-auto'>
 							<LinkContainer to='/cart'>
 								<Nav.Link>
-									<i className='fas fa-shopping-cart'></i> Giỏ hàng ({cartItemsCount ?? 0})
+									<i className='fas fa-shopping-cart'></i> Giỏ hàng (
+									{cartItemsCount ?? 0})
 								</Nav.Link>
 							</LinkContainer>
 							{userInfo ? (
@@ -74,5 +75,5 @@ export default function Header() {
 				</Container>
 			</Navbar>
 		</header>
-	);
+	)
 }
