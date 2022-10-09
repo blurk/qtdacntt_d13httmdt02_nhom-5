@@ -12,7 +12,7 @@ export default function Meta({ title, description, keywords }) {
 }
 
 Meta.defaultProps = {
-	title: 'Tiệm nước hoa 102-Lấy bao nhiêu cũng được',
+	title: 'Dan camera',
 	description:
 		'Nước hoa Việt nam đầu tiên được đông đảo khách hàng tin dùng, hài lòng về chất lượng bởi những mùi hương theo xu hướng nước hoa thế giới, thơm dai, lan toả',
 	keywords: 'Nuoc hoa, nuoc hoa, nước hoa, Nước Hoa, nước hoa, nước hoa giá rẻ'
